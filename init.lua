@@ -1,2 +1,2 @@
-require("teemu_mjr")
+require("teemu-mjr")
 print("main")

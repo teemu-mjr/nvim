@@ -1,4 +1,4 @@
-local nnoremap = require("teemu_mjr.keymap").nnoremap
+local nnoremap = require("teemu-mjr.keymap").nnoremap
 
 -- Open NvimTree
 nnoremap("<leader>e", "<cmd>NvimTreeFocus<CR>")
