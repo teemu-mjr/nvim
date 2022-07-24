@@ -1,12 +1,16 @@
-local nnoremap = require("teemu-mjr.keymap").nnoremap
+local keymap = require("teemu-mjr.keymap")
+local nnoremap = keymap.nnoremap
+local vnoremap = keymap.vnoremap
+local xnoremap = keymap.xnoremap
 
+-- Normal --
 -- Open NvimTree
 nnoremap("<leader>e", "<cmd>NvimTreeFocus<CR>")
 
--- Close buffer
+-- Buffer
 nnoremap("<leader>c", "<cmd>BD<CR>")
+nnoremap("<leader>bl", "<cmd>buffers<CR>")
 
--- Normal --
 -- Better window navigation
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-j>", "<C-w>j")
@@ -23,9 +27,17 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("<S-h>", ":bprevious<CR>")
 
--- Move text up and down
-nnoremap("<A-j>", "<Esc>:m .+1<CR>==gi")
-nnoremap("<A-k>", "<Esc>:m .-2<CR>==gi")
-
 -- Reload config
 nnoremap("<leader>rc", "<cmd>source $MYVIMRC<CR>")
+
+-- Visual --
+-- Stay in indent mode
+vnoremap("<", "<gv")
+vnoremap(">", ">gv")
+
+-- Visual Block --
+-- Move text up and down
+xnoremap("J", ":move '>+1<CR>gv-gv")
+xnoremap("K", ":move '<-2<CR>gv-gv")
+xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
+xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
