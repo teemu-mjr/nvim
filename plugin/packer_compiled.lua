@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
