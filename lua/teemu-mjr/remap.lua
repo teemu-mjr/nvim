@@ -26,3 +26,6 @@ nnoremap("<S-h>", ":bprevious<CR>")
 -- Move text up and down
 nnoremap("<A-j>", "<Esc>:m .+1<CR>==gi")
 nnoremap("<A-k>", "<Esc>:m .-2<CR>==gi")
+
+-- Reload config
+nnoremap("<leader>rc", "<cmd>source $MYVIMRC<CR>")
