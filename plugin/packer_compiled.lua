@@ -88,6 +88,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["vim-bufkill"] = {
+    loaded = true,
+    path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/vim-bufkill",
+    url = "https://github.com/qpkorr/vim-bufkill"
   }
 }
 
