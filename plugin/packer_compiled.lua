@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/teemu-mjr/.local/share/nvim/site/pack/packer/start/darkplus.nvim",

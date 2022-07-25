@@ -12,4 +12,5 @@ return require("packer").startup(function()
     use("lewis6991/gitsigns.nvim")
     use("nvim-treesitter/nvim-treesitter")
     use("nvim-lualine/lualine.nvim")
+    use{"neoclide/coc.nvim", branch = "release"}
 end)
