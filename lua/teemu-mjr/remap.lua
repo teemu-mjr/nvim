@@ -1,6 +1,7 @@
 local keymap = require("teemu-mjr.keymap")
 local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
+local onoremap = keymap.onoremap
 local xnoremap = keymap.xnoremap
 
 -- Normal --
@@ -41,3 +42,55 @@ xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
+
+-- COC --
+-- Use `[g` and `]g` to navigate diagnostics
+-- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nnoremap("[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
+nnoremap("]g", "<Plug>(coc-diagnostic-next)", { silent  = true })
+
+-- GoTo code navigation.
+nnoremap("gd", "<Plug>(coc-definition)", { silent = true })
+nnoremap("gy", "<Plug>(coc-type-definition)", { silent = true })
+nnoremap("gi", "<Plug>(coc-implementation)", { silent = true })
+nnoremap("gr", "<Plug>(coc-references)", { silent = true })
+
+-- Use K to show documentation in preview window.
+nnoremap("K", ":call ShowDocumentation()<CR>", { silent = true })
+
+-- Symbol renaming.
+nnoremap("<leader>rn", "<Plug>(coc-rename)")
+
+-- Formatting selected code.
+xnoremap("<leader>f", "<Plug>(coc-format-selected)")
+nnoremap("<leader>f", "<Plug>(coc-format-selected)")
+
+-- Applying codeAction to the selected region.
+-- Example: `<leader>aap` for current paragraph
+xnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
+nnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
+
+-- Renoremap("keys for applying codeAction to the current buffer.
+nnoremap("<leader>ac", "<Plug>(coc-codeaction)")
+
+-- Apply AutoFix to problem on the current line.
+nnoremap("<leader>qf", "<Plug>(coc-fix-current)")
+
+-- Run the Code Lens action on the current line.
+nnoremap("<leader>cl", "<Plug>(coc-codelens-action)")
+
+-- Map function and class text objects
+-- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xnoremap("if", "<Plug>(coc-funcobj-i)")
+onoremap("if", "<Plug>(coc-funcobj-i)")
+xnoremap("af", "<Plug>(coc-funcobj-a)")
+onoremap("af", "<Plug>(coc-funcobj-a)")
+xnoremap("ic", "<Plug>(coc-classobj-i)")
+onoremap("ic", "<Plug>(coc-classobj-i)")
+xnoremap("ac", "<Plug>(coc-classobj-a)")
+onoremap("ac", "<Plug>(coc-classobj-a)")
+
+-- Use CTRL-S for selections ranges.
+-- Requires 'textDocument/selectionRange' support of language server.
+nnoremap("<C-s>", "<Plug>(coc-range-select)", { silent = true })
+xnoremap("<C-s>", "<Plug>(coc-range-select)", { silent = true })
