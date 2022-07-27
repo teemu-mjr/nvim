@@ -9,6 +9,7 @@ local xnoremap = keymap.xnoremap
 nnoremap("<leader>e", "<cmd>NvimTreeFocus<CR>")
 -- Buffer
 nnoremap("<leader>c", "<cmd>BD<CR>")
+nnoremap("<leader>C", "<cmd>BD!<CR>")
 nnoremap("<leader>bl", "<cmd>buffers<CR>")
 -- Better window navigation
 nnoremap("<C-h>", "<C-w>h")
