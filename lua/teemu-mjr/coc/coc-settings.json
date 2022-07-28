@@ -1,3 +1,15 @@
 {
-  "clangd.path": "~/.dotfiles/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd"
+    "hover.target": "float",
+    "hover.floatConfig": {
+        "maxWidth": 35,
+        "maxHeight": 10
+    },
+    "suggest.floatConfig": {
+        "maxWidth": 35
+    },
+    "signature.floatConfig": {
+        "maxWidth": 35,
+        "maxHeight": 10
+    },
+    "signature.hideOnTextChange": true
 }
