@@ -13,4 +13,5 @@ return require("packer").startup(function()
     use("nvim-treesitter/nvim-treesitter")
     use("nvim-lualine/lualine.nvim")
     use{"neoclide/coc.nvim", branch = "release"}
+    use("windwp/nvim-autopairs")
 end)
