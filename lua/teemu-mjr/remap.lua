@@ -1,8 +1,13 @@
 local keymap = require("teemu-mjr.keymap")
+-- normal
 local nnoremap = keymap.nnoremap
+-- visual
 local vnoremap = keymap.vnoremap
-local onoremap = keymap.onoremap
+-- visual block
 local xnoremap = keymap.xnoremap
+-- insert
+local inoremap = keymap.inoremap
+local onoremap = keymap.onoremap
 
 -- Normal --
 -- Open NvimTree
@@ -38,6 +43,10 @@ xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
+
+-- Insert --
+-- Move to end of line in input mode
+inoremap("<C-a>", "<esc>A")
 
 -- GitSigns --
 -- Move between hunks
