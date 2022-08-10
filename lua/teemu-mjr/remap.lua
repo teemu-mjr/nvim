@@ -29,8 +29,9 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 -- Navigate buffers
 nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("<S-h>", ":bprevious<CR>")
--- Reload config
-nnoremap("<leader>rc", "<cmd>source $MYVIMRC<CR>")
+-- Split
+nnoremap("<leader>ss", ":split<CR>")
+nnoremap("<leader>si", ":vsplit<CR>")
 
 -- Visual --
 -- Stay in indent mode
@@ -59,6 +60,8 @@ nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
 nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
 -- Reset hunk
 nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
+-- Diff
+nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
 
 -- COC --
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
