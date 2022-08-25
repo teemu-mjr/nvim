@@ -77,8 +77,10 @@ nnoremap("K", ":call ShowDocumentation()<CR>", { silent = true })
 -- Symbol renaming.
 nnoremap("<leader>rn", "<Plug>(coc-rename)")
 -- Formatting selected code.
-xnoremap("<leader>f", "<Plug>(coc-format-selected)")
 nnoremap("<leader>f", "<Plug>(coc-format-selected)")
+xnoremap("<leader>f", "<Plug>(coc-format-selected)")
+-- Formatting whole document
+nnoremap("<leader>F", "<Plug>(coc-format)")
 -- Applying codeAction to the selected region.
 -- Example: `<leader>aap` for current paragraph
 xnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
