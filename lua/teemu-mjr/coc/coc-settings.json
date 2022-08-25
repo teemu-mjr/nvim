@@ -11,5 +11,6 @@
         "maxWidth": 35,
         "maxHeight": 10
     },
-    "signature.hideOnTextChange": true
+    "signature.hideOnTextChange": true,
+    "suggest.noselect": true
 }
