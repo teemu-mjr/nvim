@@ -2,11 +2,35 @@ local wk = require("which-key")
 
 -- Custon keymaps
 wk.register({
-  c = { "close" },
-  e = { "Nvim-Tree" },
-  r = {
-    name = "reload",
-    c = { "config" },
+  b = {
+    name = "buffer",
+    l = "list buffers"
+  },
+  c = { "COC code action selected" },
+  F = { "Format document" },
+  g = {
+    name = "git",
+    b = "line blame",
+    B = "toggle current line blame",
+    d = "diff this",
+    h = "line highlight",
+    j = "next hunk",
+    k = "prev hunk",
+    r = "reset hunk"
+  },
+  r = { "COC rename" },
+  l = {
+    name = "Telescope",
+    b = "buffers",
+    f = "files",
+    g = "live grep",
+    h = "help tags"
+  },
+  q = { "COC fix current" },
+  s = {
+    name = "split",
+    i = "horizontal",
+    v = "vertical"
   },
 }, { prefix = "<leader>" })
 
@@ -62,7 +86,7 @@ wk.setup {
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
-  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers

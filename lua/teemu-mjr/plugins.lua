@@ -14,4 +14,5 @@ return require("packer").startup(function()
     use("nvim-lualine/lualine.nvim")
     use{"neoclide/coc.nvim", branch = "release"}
     use("windwp/nvim-autopairs")
+    use{"nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} }}
 end)

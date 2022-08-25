@@ -63,6 +63,12 @@ nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
 -- Diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
 
+-- TELESCOPE --
+nnoremap("<leader>lf", ":Telescope find_files<cr>")
+nnoremap("<leader>lg", ":Telescope live_grep<cr>")
+nnoremap("<leader>lb", ":Telescope buffers<cr>")
+nnoremap("<leader>lh", ":Telescope help_tags<cr>")
+
 -- COC --
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nnoremap("[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
@@ -75,7 +81,7 @@ nnoremap("gr", "<Plug>(coc-references)", { silent = true })
 -- Use K to show documentation in preview window.
 nnoremap("K", ":call ShowDocumentation()<CR>", { silent = true })
 -- Symbol renaming.
-nnoremap("<leader>rn", "<Plug>(coc-rename)")
+nnoremap("<leader>r", "<Plug>(coc-rename)")
 -- Formatting selected code.
 nnoremap("<leader>f", "<Plug>(coc-format-selected)")
 xnoremap("<leader>f", "<Plug>(coc-format-selected)")
@@ -88,7 +94,7 @@ nnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
 -- Renoremap("keys for applying codeAction to the current buffer.
 nnoremap("<leader>ac", "<Plug>(coc-codeaction)")
 -- Apply AutoFix to problem on the current line.
-nnoremap("<leader>qf", "<Plug>(coc-fix-current)")
+nnoremap("<leader>f", "<Plug>(coc-fix-current)")
 -- Run the Code Lens action on the current line.
 nnoremap("<leader>cl", "<Plug>(coc-codelens-action)")
 -- Map function and class text objects
