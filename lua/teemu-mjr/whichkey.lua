@@ -2,11 +2,26 @@ local wk = require("which-key")
 
 -- Custon keymaps
 wk.register({
+  a = {
+    name = "COC Code Action",
+    a = {
+      name = "apply",
+      p = "paragraph"
+    },
+    c = "current buffer",
+    l = "current line"
+  },
   b = {
     name = "buffer",
     l = "list buffers"
   },
   c = { "COC code action selected" },
+  d = {
+    name = "COC diagnostics",
+    a = "all",
+    j = "next",
+    k = "previous"
+    },
   F = { "Format document" },
   g = {
     name = "git",

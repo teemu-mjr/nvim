@@ -71,8 +71,9 @@ nnoremap("<leader>lh", ":Telescope help_tags<cr>")
 
 -- COC --
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nnoremap("[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
-nnoremap("]g", "<Plug>(coc-diagnostic-next)", { silent  = true })
+nnoremap("<leader>dk", "<Plug>(coc-diagnostic-prev)", { silent = true })
+nnoremap("<leader>dj", "<Plug>(coc-diagnostic-next)", { silent  = true })
+nnoremap("<leader>da", ":CocDiagnostics<CR>", { silent = true})
 -- GoTo code navigation.
 nnoremap("gd", "<Plug>(coc-definition)", { silent = true })
 nnoremap("gy", "<Plug>(coc-type-definition)", { silent = true })
