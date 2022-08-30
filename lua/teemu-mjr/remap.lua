@@ -95,9 +95,9 @@ nnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
 -- Renoremap("keys for applying codeAction to the current buffer.
 nnoremap("<leader>ac", "<Plug>(coc-codeaction)")
 -- Apply AutoFix to problem on the current line.
-nnoremap("<leader>f", "<Plug>(coc-fix-current)")
+nnoremap("<leader>qf", "<Plug>(coc-fix-current)")
 -- Run the Code Lens action on the current line.
-nnoremap("<leader>cl", "<Plug>(coc-codelens-action)")
+nnoremap("<leader>kl", "<Plug>(coc-codelens-action)")
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xnoremap("if", "<Plug>(coc-funcobj-i)")

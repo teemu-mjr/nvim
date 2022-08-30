@@ -1,18 +1,19 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
-    use("lunarvim/darkplus.nvim")
+    use{"neoclide/coc.nvim", branch = "release"}
+    use{"nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} }}
     use("kyazdani42/nvim-tree.lua")
     use("kyazdani42/nvim-web-devicons")
-    use("qpkorr/vim-bufkill")
+    use("nvim-treesitter/nvim-treesitter")
+    use("windwp/nvim-autopairs")
+    use("lewis6991/gitsigns.nvim")
     use("akinsho/bufferline.nvim")
-    use("tpope/vim-surround")
-    use("numToStr/Comment.nvim")
     use("akinsho/toggleterm.nvim")
     use("folke/which-key.nvim")
-    use("lewis6991/gitsigns.nvim")
-    use("nvim-treesitter/nvim-treesitter")
     use("nvim-lualine/lualine.nvim")
-    use{"neoclide/coc.nvim", branch = "release"}
-    use("windwp/nvim-autopairs")
-    use{"nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} }}
+    use("numToStr/Comment.nvim")
+    use("tpope/vim-surround")
+    use("qpkorr/vim-bufkill")
+    use("lunarvim/darkplus.nvim")
+    use("morhetz/gruvbox")
 end)

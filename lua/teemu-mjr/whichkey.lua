@@ -15,7 +15,6 @@ wk.register({
     name = "buffer",
     l = "list buffers"
   },
-  c = { "COC code action selected" },
   d = {
     name = "COC diagnostics",
     a = "all",
@@ -41,7 +40,10 @@ wk.register({
     g = "live grep",
     h = "help tags"
   },
-  q = { "COC fix current" },
+  q = {
+    name = "quick",
+    f = "COC fix current" 
+  },
   s = {
     name = "split",
     i = "horizontal",
