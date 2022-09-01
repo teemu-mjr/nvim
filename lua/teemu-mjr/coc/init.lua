@@ -1,12 +1,3 @@
--- Lua settings
-vim.opt.cmdheight = 2
-vim.opt.signcolumn="yes" -- yes | number
-vim.opt.encoding="utf8"
-vim.opt.hidden=true
-vim.g.nobackup=true
-vim.g.nowritebackup=true
-vim.g.uptime=200
-
 -- vimscript
 vim.cmd(
 [[

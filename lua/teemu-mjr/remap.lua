@@ -32,6 +32,9 @@ nnoremap("<S-h>", ":bprevious<CR>")
 -- Split
 nnoremap("<leader>ss", ":split<CR>")
 nnoremap("<leader>si", ":vsplit<CR>")
+-- -- Center cursor on <C-u> and <C-d>
+-- nnoremap("<C-u>", "zz")
+-- nnoremap("<C-d>", "zz")
 
 -- Visual --
 -- Stay in indent mode
