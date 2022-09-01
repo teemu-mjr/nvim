@@ -15,5 +15,7 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = true
 
+vim.opt.relativenumber = true
+
 vim.g.mapleader = " "
 vim.opt.splitright = true
