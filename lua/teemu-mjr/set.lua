@@ -25,4 +25,4 @@ vim.opt.encoding = "utf8"
 vim.opt.hidden = true
 vim.opt.backup = false
 vim.g.nowritebackup = true
-vim.g.uptime = 200
+vim.g.uptime = 50
