@@ -11,7 +11,7 @@ local onoremap = keymap.onoremap
 
 -- Normal --
 -- Open NvimTree
-nnoremap("<leader>e", "<cmd>NvimTreeFocus<CR>")
+nnoremap("<leader>e", "<cmd>Neotree<CR>")
 -- Buffer
 nnoremap("<leader>c", "<cmd>BD<CR>")
 nnoremap("<leader>C", "<cmd>BD!<CR>")

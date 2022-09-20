@@ -2,8 +2,15 @@ return require("packer").startup(function()
     use("wbthomason/packer.nvim")
     use{"neoclide/coc.nvim", branch = "release"}
     use{"nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} }}
-    use("kyazdani42/nvim-tree.lua")
-    use("kyazdani42/nvim-web-devicons")
+    use {
+      "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = { 
+          "nvim-lua/plenary.nvim",
+          "kyazdani42/nvim-web-devicons",
+          "MunifTanjim/nui.nvim",
+        }
+      }
     use("nvim-treesitter/nvim-treesitter")
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")

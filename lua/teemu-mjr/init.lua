@@ -1,6 +1,6 @@
 require("teemu-mjr.set")
 require("teemu-mjr.plugins")
-require("teemu-mjr.nvim-tree")
+require("teemu-mjr.neo-tree")
 require("teemu-mjr.remap")
 require("teemu-mjr.buffline")
 require("teemu-mjr.comment")
