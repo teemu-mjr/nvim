@@ -26,3 +26,7 @@ require("nvim-treesitter.configs").setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- Automatic folding
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

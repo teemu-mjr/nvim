@@ -1,13 +1,13 @@
-local keymap = require("teemu-mjr.keymap")
+local Remap = require("teemu-mjr.keymap")
 -- normal
-local nnoremap = keymap.nnoremap
+local nnoremap = Remap.nnoremap
 -- visual
-local vnoremap = keymap.vnoremap
+local vnoremap = Remap.vnoremap
 -- visual block
-local xnoremap = keymap.xnoremap
+local xnoremap = Remap.xnoremap
 -- insert
-local inoremap = keymap.inoremap
-local onoremap = keymap.onoremap
+local inoremap = Remap.inoremap
+local onoremap = Remap.onoremap
 
 -- Normal --
 -- Open NvimTree
@@ -71,47 +71,3 @@ nnoremap("<leader>lf", ":Telescope find_files<cr>")
 nnoremap("<leader>lg", ":Telescope live_grep<cr>")
 nnoremap("<leader>lb", ":Telescope buffers<cr>")
 nnoremap("<leader>lh", ":Telescope help_tags<cr>")
-
--- COC --
--- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nnoremap("<leader>dk", "<Plug>(coc-diagnostic-prev)", { silent = true })
-nnoremap("<leader>dj", "<Plug>(coc-diagnostic-next)", { silent  = true })
-nnoremap("<leader>da", ":CocDiagnostics<CR>", { silent = true})
--- GoTo code navigation.
-nnoremap("gd", "<Plug>(coc-definition)", { silent = true })
-nnoremap("gy", "<Plug>(coc-type-definition)", { silent = true })
-nnoremap("gi", "<Plug>(coc-implementation)", { silent = true })
-nnoremap("gr", "<Plug>(coc-references)", { silent = true })
--- Use K to show documentation in preview window.
-nnoremap("K", ":call ShowDocumentation()<CR>", { silent = true })
--- Symbol renaming.
-nnoremap("<leader>r", "<Plug>(coc-rename)")
--- Formatting selected code.
-nnoremap("<leader>f", "<Plug>(coc-format-selected)")
-xnoremap("<leader>f", "<Plug>(coc-format-selected)")
--- Formatting whole document
-nnoremap("<leader>F", "<Plug>(coc-format)")
--- Applying codeAction to the selected region.
--- Example: `<leader>aap` for current paragraph
-xnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
-nnoremap("<leader>a", "<Plug>(coc-codeaction-selected)")
--- Renoremap("keys for applying codeAction to the current buffer.
-nnoremap("<leader>ac", "<Plug>(coc-codeaction)")
--- Apply AutoFix to problem on the current line.
-nnoremap("<leader>qf", "<Plug>(coc-fix-current)")
--- Run the Code Lens action on the current line.
-nnoremap("<leader>kl", "<Plug>(coc-codelens-action)")
--- Map function and class text objects
--- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xnoremap("if", "<Plug>(coc-funcobj-i)")
-onoremap("if", "<Plug>(coc-funcobj-i)")
-xnoremap("af", "<Plug>(coc-funcobj-a)")
-onoremap("af", "<Plug>(coc-funcobj-a)")
-xnoremap("ic", "<Plug>(coc-classobj-i)")
-onoremap("ic", "<Plug>(coc-classobj-i)")
-xnoremap("ac", "<Plug>(coc-classobj-a)")
-onoremap("ac", "<Plug>(coc-classobj-a)")
--- Use CTRL-S for selections ranges.
--- Requires 'textDocument/selectionRange' support of language server.
-nnoremap("<C-s>", "<Plug>(coc-range-select)", { silent = true })
-xnoremap("<C-s>", "<Plug>(coc-range-select)", { silent = true })
