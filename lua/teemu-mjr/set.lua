@@ -26,3 +26,4 @@ vim.opt.hidden = true
 vim.opt.backup = false
 vim.g.nowritebackup = true
 vim.g.uptime = 50
+vim.opt.colorcolumn = "80"
