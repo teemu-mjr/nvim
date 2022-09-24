@@ -7,10 +7,9 @@ local vnoremap = Remap.vnoremap
 local xnoremap = Remap.xnoremap
 -- insert
 local inoremap = Remap.inoremap
-local onoremap = Remap.onoremap
 
 -- Normal --
--- Open NvimTree
+-- Open Neotree
 nnoremap("<leader>e", "<cmd>Neotree<CR>")
 -- Buffer
 nnoremap("<leader>c", "<cmd>BD<CR>")
