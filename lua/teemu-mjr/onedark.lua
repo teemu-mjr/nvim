@@ -1,4 +1,4 @@
-vim.opt.background = dark
+vim.opt.background = "dark"
 
 vim.cmd[[silent! colorscheme onedark]]
 
