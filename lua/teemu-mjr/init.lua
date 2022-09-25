@@ -18,6 +18,5 @@ require("teemu-mjr.autopairs")
 require("teemu-mjr.autotag")
 
 require("teemu-mjr.lualine")
-require("teemu-mjr.onedark")
 require("teemu-mjr.treesitter-context")
 require("teemu-mjr.gitsign")

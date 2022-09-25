@@ -38,7 +38,9 @@ return require("packer").startup(function()
   -- Visual
   use("nvim-treesitter/nvim-treesitter")
   use("nvim-treesitter/nvim-treesitter-context")
-  use("joshdick/onedark.vim")
   use("lewis6991/gitsigns.nvim")
   use("akinsho/bufferline.nvim")
+  -- Theme
+  use("gruvbox-community/gruvbox")
+  use("folke/tokyonight.nvim")
 end)
