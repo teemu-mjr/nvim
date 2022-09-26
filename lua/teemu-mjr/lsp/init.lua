@@ -119,12 +119,6 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
-
-    -- ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
-    -- ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
-
     ['<C-p>'] = cmp.mapping.scroll_docs(-4),
     ['<C-n>'] = cmp.mapping.scroll_docs(4),
 
@@ -146,6 +140,14 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
+
+    ["<C-Space>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+    end),
 
     ['<Tab>'] = cmp.mapping(function(fallback)
       local col = vim.fn.col('.') - 1
