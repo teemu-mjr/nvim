@@ -119,11 +119,17 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-n>'] = cmp.mapping.scroll_docs(4),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+
+    ['<C-f>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(4),
 
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping(function()
+      cmp.confirm({ select = true })
+    end),
+    ['<C-o>'] = cmp.mapping.confirm({ select = true }),
 
     ['<C-l>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(1) then
