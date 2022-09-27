@@ -3,6 +3,7 @@ require("teemu-mjr.remap")
 require("teemu-mjr.plugins")
 
 require("teemu-mjr.lsp")
+require("teemu-mjr.cmp")
 
 require("teemu-mjr.treesitter")
 
