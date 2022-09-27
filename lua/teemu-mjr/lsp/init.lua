@@ -126,9 +126,7 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(4),
 
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping(function()
-      cmp.confirm({ select = true })
-    end),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-o>'] = cmp.mapping.confirm({ select = true }),
 
     ['<C-l>'] = cmp.mapping(function(fallback)
