@@ -10,12 +10,13 @@ return require("packer").startup(function()
   use("hrsh7th/cmp-cmdline")
   use("hrsh7th/nvim-cmp")
   use("saadparwaiz1/cmp_luasnip")
+  use("jose-elias-alvarez/null-ls.nvim")
 
   -- Snippets
   use("L3MON4D3/LuaSnip")
   use("rafamadriz/friendly-snippets")
 
-  -- 
+  --
   use { "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } }
   use {
     "nvim-neo-tree/neo-tree.nvim",
