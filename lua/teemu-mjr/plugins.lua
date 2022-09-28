@@ -9,6 +9,7 @@ return require("packer").startup(function()
   use("hrsh7th/cmp-path")
   use("hrsh7th/cmp-cmdline")
   use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-nvim-lsp-signature-help")
   use("saadparwaiz1/cmp_luasnip")
   use("jose-elias-alvarez/null-ls.nvim")
 
