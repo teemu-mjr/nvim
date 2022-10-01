@@ -9,13 +9,13 @@ local opts = { noremap = true, silent = true }
 
 LspRemap.mappings(opts)
 
-local on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
+local null_ls_servers = { "sumneko_lua", "tsserver", "html" }
 
-	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
+local on_attach = function(client, bufnr)
+	for _, v in ipairs(null_ls_servers) do
+		if v == client.name then
+			client.resolved_capabilities.document_formatting = false
+		end
 	end
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -41,6 +41,16 @@ require("lspconfig")["sumneko_lua"].setup({
 })
 
 require("lspconfig")["tsserver"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+
+require("lspconfig")["html"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+
+require("lspconfig")["cssls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 })
