@@ -62,6 +62,7 @@ nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
 nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
 -- Reset hunk
 nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
+nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
 -- Diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
 
