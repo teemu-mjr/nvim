@@ -19,12 +19,12 @@ require('bufferline').setup {
     --- Please note some names can/will break the
     --- bufferline so use this at your discretion knowing that it has
     --- some limitations that will *NOT* be fixed.
-    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
-      -- remove extension from markdown files for example
-      if buf.name:match('%.md') then
-        return vim.fn.fnamemodify(buf.name, ':t:r')
-      end
-    end,
+    -- name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+    --   -- remove extension from markdown files for example
+    --   if buf.name:match('%.md') then
+    --     return vim.fn.fnamemodify(buf.name, ':t:r')
+    --   end
+    -- end,
     max_name_length = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     tab_size = 18,
@@ -54,7 +54,7 @@ require('bufferline').setup {
         return true
       end
     end,
-    offsets = {{ filetype = "NvimTree", text = "File Explorer" }}, -- {{filetype = "NvimTree", text = "File Explorer" | function , text_align = "left" | "center" | "right"}},
+    offsets = {{ filetype = "neo-tree", text = "File Explorer" }}, -- {{filetype = "NvimTree", text = "File Explorer" | function , text_align = "left" | "center" | "right"}},
     color_icons = true, -- true | false, -- whether or not to add the filetype icon highlights
     show_buffer_icons = true, -- true | false, -- disable filetype icons for buffers
     show_buffer_close_icons = true, -- true | false,
