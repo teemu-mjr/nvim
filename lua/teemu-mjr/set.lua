@@ -19,6 +19,7 @@ vim.opt.relativenumber = true
 
 vim.opt.splitright = true
 
+-- vim.opt.winbar = "%f"
 vim.opt.cmdheight = 1
 vim.opt.signcolumn = "yes" -- yes | number
 vim.opt.encoding = "utf8"

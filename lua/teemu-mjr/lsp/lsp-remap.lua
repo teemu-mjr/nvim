@@ -16,7 +16,7 @@ M.on_attach = function(bufopts)
 	nnoremap("gd", ":lua vim.lsp.buf.definition()<cr>", bufopts)
 	nnoremap("K", ":lua vim.lsp.buf.hover()<cr>", bufopts)
 	nnoremap("gi", ":lua vim.lsp.buf.implementation()<cr>", bufopts)
-	nnoremap("<c-k>", ":lua vim.lsp.buf.signature_help()<cr>", bufopts)
+	nnoremap("<c-s>", ":lua vim.lsp.buf.signature_help()<cr>", bufopts)
 
 	nnoremap("gw", ":lua vim.lsp.buf.document_symbol()<cr>", bufopts)
 	nnoremap("gw", ":lua vim.lsp.buf.workspace_symbol()<cr>", bufopts)
@@ -24,7 +24,7 @@ M.on_attach = function(bufopts)
 	nnoremap("gt", ":lua vim.lsp.buf.type_definition()<cr>", bufopts)
 	nnoremap("<leader>af", ":lua vim.lsp.buf.code_action()<cr>", bufopts)
 	nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<cr>", bufopts)
-	nnoremap("<leader>f", ":lua vim.lsp.buf.formatting()<cr>", bufopts)
+	nnoremap("<leader>f", ":lua vim.lsp.buf.format()<cr>", bufopts)
 end
 
 return M

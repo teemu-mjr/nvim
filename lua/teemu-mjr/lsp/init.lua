@@ -9,12 +9,12 @@ local opts = { noremap = true, silent = true }
 
 LspRemap.mappings(opts)
 
-local null_ls_servers = { "sumneko_lua", "tsserver", "html" }
+local null_ls_servers = { "sumneko_lua", "tsserver", "jsonls", "html" }
 
 local on_attach = function(client, bufnr)
 	for _, v in ipairs(null_ls_servers) do
 		if v == client.name then
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.documentFormattingProvider = false
 		end
 	end
 
@@ -51,6 +51,15 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
+local def_opts_servers = { "tsserver", "jsonls", "html", "cssls", "clangd" }
+
+for _, server in ipairs(def_opts_servers) do
+	require("lspconfig")[server].setup({
+		on_attach = on_attach,
+		flags = lsp_flags,
+	})
+end
+
 require("lspconfig")["sumneko_lua"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -61,19 +70,4 @@ require("lspconfig")["sumneko_lua"].setup({
 			},
 		},
 	},
-})
-
-require("lspconfig")["tsserver"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-
-require("lspconfig")["html"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-
-require("lspconfig")["cssls"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
 })
