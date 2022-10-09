@@ -9,4 +9,4 @@ vim.api.nvim_command([[
     augroup END
 ]])
 
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
