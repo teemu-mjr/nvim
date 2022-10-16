@@ -1,3 +1,8 @@
+local LspRemap = require("teemu-mjr.lsp.lsp-remap")
+-- Remapping
+local opts = { noremap = true, silent = true }
+LspRemap.diagnostic(opts)
+
 local sign = function(opts)
 	vim.fn.sign_define(opts.name, {
 		texthl = opts.name,

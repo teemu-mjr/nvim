@@ -1,73 +1,62 @@
 local LspRemap = require("teemu-mjr.lsp.lsp-remap")
+local lsp_config = require("lspconfig")
 require("teemu-mjr.lsp.lsp-installer")
-require("teemu-mjr.lsp.diagnostics")
 require("teemu-mjr.lsp.null-ls")
+require("teemu-mjr.lsp.diagnostics")
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
 
-LspRemap.mappings(opts)
+--Enable completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local null_ls_servers = { "sumneko_lua", "tsserver", "jsonls", "html" }
 
-local on_attach = function(client, bufnr)
-	for _, v in ipairs(null_ls_servers) do
-		if v == client.name then
-			client.server_capabilities.documentFormattingProvider = false
-		end
-	end
+local general_on_attach = function(client, bufnr)
 
-	if client.server_capabilities.documentHighlightProvider then
-		vim.cmd([[hi! link LspReferenceText CursorColumn]])
-		vim.cmd([[hi! link LspReferenceRead CursorColumn]])
-		vim.cmd([[hi! link LspReferenceWrite CursorColumn]])
+  for _, v in ipairs(null_ls_servers) do
+    if v == client.name then
+      client.server_capabilities.documentFormattingProvider = false
+    end
+  end
 
-		if client.server_capabilities.documentHighlightProvider then
-			vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
-			vim.api.nvim_create_autocmd("CursorHold", {
-				callback = vim.lsp.buf.document_highlight,
-				buffer = bufnr,
-				group = "lsp_document_highlight",
-				desc = "Document Highlight",
-			})
-			vim.api.nvim_create_autocmd("CursorMoved", {
-				callback = vim.lsp.buf.clear_references,
-				buffer = bufnr,
-				group = "lsp_document_highlight",
-				desc = "Clear All the References",
-			})
-		end
-	end
+  -- Remapping
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  LspRemap.on_attach(bufopts)
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	LspRemap.on_attach(bufopts)
+  -- Higlights
+  if client.server_capabilities.documentHighlightProvider then
+    require("teemu-mjr.lsp.higlight").on_attach(bufnr)
+  end
 end
 
 local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
+  debounce_text_changes = 150,
 }
 
-local def_opts_servers = { "tsserver", "jsonls", "html", "cssls", "clangd" }
+--
+-- Setups servers --
+--
+lsp_config["sumneko_lua"].setup({
+  flags = lsp_flags,
+  capabilities = capabilities,
+  on_attach = general_on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "use" },
+      },
+    },
+  },
+})
 
-for _, server in ipairs(def_opts_servers) do
-	require("lspconfig")[server].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-	})
-end
+lsp_config["tsserver"].setup({
+  flags = lsp_flags,
+  capabilities = capabilities,
+  on_attach = general_on_attach
+})
 
-require("lspconfig")["sumneko_lua"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim", "use" },
-			},
-		},
-	},
+lsp_config["html"].setup({
+  flags = lsp_flags,
+  capabilities = capabilities,
+  on_attach = general_on_attach
 })

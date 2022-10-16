@@ -4,7 +4,7 @@ local nnoremap = Remap.nnoremap
 
 local M = {}
 
-M.mappings = function(opts)
+M.diagnostic = function(opts)
 	nnoremap("<leader>dd", ":lua vim.diagnostic.open_float()<cr>", opts)
 	nnoremap("<leader>dk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
 	nnoremap("<leader>dj", ":lua vim.diagnostic.goto_next()<cr>", opts)
