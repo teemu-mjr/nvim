@@ -60,3 +60,9 @@ lsp_config["html"].setup({
   capabilities = capabilities,
   on_attach = general_on_attach
 })
+
+lsp_config["bashls"].setup({
+  flags = lsp_flags,
+  capabilities = capabilities,
+  on_attach = general_on_attach
+})
