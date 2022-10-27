@@ -25,7 +25,7 @@ local general_on_attach = function(client, bufnr)
 end
 
 -- Null-ls on attach that appends to general_on_attach
-local general_null_ls_on_attach = function(client, bufnr)
+local null_ls_on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	general_on_attach(client, bufnr)
 end
@@ -37,10 +37,10 @@ local lsp_flags = {
 --
 -- Setups servers --
 --
-lsp_config["sumneko_lua"].setup({
+lsp_config.sumneko_lua.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
-	on_attach = general_null_ls_on_attach,
+	on_attach = null_ls_on_attach,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -50,19 +50,34 @@ lsp_config["sumneko_lua"].setup({
 	},
 })
 
-lsp_config["tsserver"].setup({
+lsp_config.clangd.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
-	on_attach = general_null_ls_on_attach,
+	on_attach = general_on_attach,
 })
 
-lsp_config["html"].setup({
+lsp_config.tsserver.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
-	on_attach = general_null_ls_on_attach,
+	on_attach = null_ls_on_attach,
 })
 
-lsp_config["bashls"].setup({
+lsp_config.html.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = null_ls_on_attach,
+})
+
+lsp_config.bashls.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = general_on_attach,
+	bash = {
+		filetypes = { "sh" },
+	},
+})
+
+lsp_config.intelephense.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 	on_attach = general_on_attach,

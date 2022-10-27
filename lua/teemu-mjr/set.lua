@@ -21,7 +21,7 @@ vim.opt.splitright = true
 
 -- vim.opt.winbar = "%f"
 vim.opt.cmdheight = 1
-vim.opt.signcolumn = "yes" -- yes | number
+vim.opt.signcolumn = "yes"
 vim.opt.encoding = "utf8"
 vim.opt.hidden = true
 vim.opt.backup = false
