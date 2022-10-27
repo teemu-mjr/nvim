@@ -39,6 +39,8 @@ nnoremap("<C-u>", "<C-u>zz")
 -- Stay in indent mode
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
+-- Copy to clipboard
+vnoremap("<C-c>", "\"+y")
 
 -- Visual Block --
 -- Move text up and down
