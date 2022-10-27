@@ -4,14 +4,7 @@ local nnoremap = Remap.nnoremap
 
 local M = {}
 
-M.diagnostic = function(opts)
-	nnoremap("<leader>dd", ":lua vim.diagnostic.open_float()<cr>", opts)
-	nnoremap("<leader>dk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
-	nnoremap("<leader>dj", ":lua vim.diagnostic.goto_next()<cr>", opts)
-	nnoremap("<leader>dl", ":lua vim.diagnostic.setloclist()<cr>", opts)
-end
-
-M.on_attach = function(bufopts)
+M.general = function(bufopts)
 	nnoremap("gD", ":lua vim.lsp.buf.declaration()<cr>", bufopts)
 	nnoremap("gd", ":lua vim.lsp.buf.definition()<cr>", bufopts)
 	nnoremap("K", ":lua vim.lsp.buf.hover()<cr>", bufopts)
@@ -25,6 +18,14 @@ M.on_attach = function(bufopts)
 	nnoremap("<leader>af", ":lua vim.lsp.buf.code_action()<cr>", bufopts)
 	nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<cr>", bufopts)
 	nnoremap("<leader>f", ":lua vim.lsp.buf.format()<cr>", bufopts)
+end
+
+M.diagnostic = function(opts)
+	nnoremap("<leader>ty", ":!echo ok<cr>", opts)
+	nnoremap("<leader>dd", ":lua vim.diagnostic.open_float()<cr>", opts)
+	nnoremap("<leader>dk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
+	nnoremap("<leader>dj", ":lua vim.diagnostic.goto_next()<cr>", opts)
+	nnoremap("<leader>dl", ":lua vim.diagnostic.setloclist()<cr>", opts)
 end
 
 return M
