@@ -68,6 +68,12 @@ lsp_config.html.setup({
 	on_attach = null_ls_on_attach,
 })
 
+lsp_config.cssls.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = null_ls_on_attach,
+})
+
 lsp_config.bashls.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
