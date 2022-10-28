@@ -40,7 +40,7 @@ nnoremap("<C-u>", "<C-u>zz")
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 -- Copy to clipboard
-vnoremap("<C-c>", "\"+y")
+vnoremap("<C-c>", '"+y')
 
 -- Visual Block --
 -- Move text up and down

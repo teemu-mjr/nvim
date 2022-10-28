@@ -1,6 +1,6 @@
 vim.opt.background = "dark"
 
-vim.cmd[[silent! colorscheme onedark]]
+vim.cmd([[silent! colorscheme onedark]])
 
 vim.api.nvim_command([[
     augroup ChangeBackgroudColour
