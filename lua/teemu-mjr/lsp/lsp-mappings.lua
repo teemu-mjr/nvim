@@ -1,4 +1,4 @@
-local Remap = require("teemu-mjr.keymap")
+local Remap = require("teemu-mjr.remap")
 
 local nnoremap = Remap.nnoremap
 
@@ -21,7 +21,8 @@ M.general = function(bufopts)
 end
 
 M.diagnostic = function(opts)
-	nnoremap("<leader>ty", ":!echo ok<cr>", opts)
+    nnoremap("<leader>dD", ":lua vim.diagnostic.disable()<cr>", opts)
+    nnoremap("<leader>dE", ":lua vim.diagnostic.enable()<cr>", opts)
 	nnoremap("<leader>dd", ":lua vim.diagnostic.open_float()<cr>", opts)
 	nnoremap("<leader>dk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
 	nnoremap("<leader>dj", ":lua vim.diagnostic.goto_next()<cr>", opts)

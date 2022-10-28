@@ -1,4 +1,4 @@
-local LspRemap = require("teemu-mjr.lsp.lsp-remap")
+local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
 local lsp_config = require("lspconfig")
 require("teemu-mjr.lsp.lsp-installer")
 require("teemu-mjr.lsp.null-ls")
@@ -78,6 +78,12 @@ lsp_config.bashls.setup({
 })
 
 lsp_config.intelephense.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = general_on_attach,
+})
+
+lsp_config.ltex.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 	on_attach = general_on_attach,

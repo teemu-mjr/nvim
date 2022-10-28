@@ -1,5 +1,5 @@
 require("teemu-mjr.set")
-require("teemu-mjr.remap")
+require("teemu-mjr.mappings")
 require("teemu-mjr.plugins")
 
 require("teemu-mjr.lsp")
