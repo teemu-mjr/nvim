@@ -11,6 +11,7 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
+	preselect = cmp.PreselectMode.None,
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
@@ -45,7 +46,7 @@ cmp.setup({
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 
-        ["<CR>"] = cmp.mapping.confirm(),
+		["<CR>"] = cmp.mapping.confirm(),
 
 		["<C-f>"] = cmp.mapping.scroll_docs(-4),
 		["<C-b>"] = cmp.mapping.scroll_docs(4),
