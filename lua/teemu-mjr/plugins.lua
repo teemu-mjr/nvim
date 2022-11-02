@@ -35,7 +35,14 @@ return require("packer").startup(function()
 			require("window-picker").setup()
 		end,
 	})
-    use("mbbill/undotree")
+	use("mbbill/undotree")
+	use({
+		"TimUntersberger/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+		},
+	})
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 	use("akinsho/toggleterm.nvim")
