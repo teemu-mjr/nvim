@@ -35,6 +35,7 @@ return require("packer").startup(function()
 			require("window-picker").setup()
 		end,
 	})
+    use("mbbill/undotree")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 	use("akinsho/toggleterm.nvim")

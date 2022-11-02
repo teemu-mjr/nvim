@@ -35,16 +35,16 @@ nnoremap("<leader>sv", ":vsplit<CR>")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 -- copy to clipboard
-nnoremap("<leader>y", "\"+y")
+nnoremap("<leader>y", '"+y')
 -- paste from clipboard
-nnoremap("<leader>p", "\"+p")
+nnoremap("<leader>p", '"+p')
 
 -- visual --
 -- stay in indent mode
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 -- copy to clipboard
-vnoremap("<leader>y", "\"+y")
+vnoremap("<leader>y", '"+y')
 
 -- visual block --
 -- move text up and down
@@ -67,6 +67,8 @@ nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
 nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
 -- diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
+-- undotree
+nnoremap("<leader>u", ":UndotreeToggle<CR>")
 
 -- telescope --
 nnoremap("<leader>lf", ":Telescope find_files<cr>")

@@ -9,6 +9,7 @@ require("teemu-mjr.treesitter")
 require("teemu-mjr.treesitter-context")
 
 require("teemu-mjr.nvim-tree")
+require("teemu-mjr.undotree")
 require("teemu-mjr.buffline")
 require("teemu-mjr.toggleterm")
 require("teemu-mjr.telescope")
