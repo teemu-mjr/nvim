@@ -8,67 +8,71 @@ local xnoremap = Remap.xnoremap
 -- insert
 local inoremap = Remap.inoremap
 
--- Normal --
--- Open Neotree
+-- normal --
+-- open neotree
 nnoremap("<leader>e", "<cmd>Neotree<CR>")
--- Buffer
+-- buffer
 nnoremap("<leader>c", "<cmd>BD<CR>")
 nnoremap("<leader>C", "<cmd>BD!<CR>")
 nnoremap("<leader>bl", "<cmd>buffers<CR>")
--- Better window navigation
+-- better window navigation
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 nnoremap("<C-l>", "<C-w>l")
--- Resize with arrows
+-- resize with arrows
 nnoremap("<C-Up>", ":resize -2<CR>")
 nnoremap("<C-Down>", ":resize +2<CR>")
 nnoremap("<C-Left>", ":vertical resize -2<CR>")
 nnoremap("<C-Right>", ":vertical resize +2<CR>")
--- Navigate buffers
+-- navigate buffers
 nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("<S-h>", ":bprevious<CR>")
--- Split
+-- split
 nnoremap("<leader>ss", ":split<CR>")
 nnoremap("<leader>si", ":vsplit<CR>")
--- Center cursor
+-- center cursor
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+-- copy to clipboard
+nnoremap("<leader>y", "\"+y")
+-- paste from clipboard
+nnoremap("<leader>p", "\"+p")
 
--- Visual --
--- Stay in indent mode
+-- visual --
+-- stay in indent mode
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
--- Copy to clipboard
-vnoremap("<C-c>", '"+y')
+-- copy to clipboard
+vnoremap("<leader>y", "\"+y")
 
--- Visual Block --
--- Move text up and down
+-- visual block --
+-- move text up and down
 xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
 
--- Insert --
--- Move to end of line in input mode
+-- insert --
+-- move to end of line in input mode
 inoremap("<C-a>", "<esc>A")
 
--- GitSigns --
--- Move between hunks
+-- gitsigns --
+-- move between hunks
 nnoremap("<leader>gj", ":Gitsigns next_hunk<CR>")
 nnoremap("<leader>gk", ":Gitsigns prev_hunk<CR>")
--- Blame
+-- blame
 nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
 nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
--- Highlight
+-- highlight
 nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
--- Reset hunk
+-- reset hunk
 nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
 nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
--- Diff
+-- diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
 
--- TELESCOPE --
+-- telescope --
 nnoremap("<leader>lf", ":Telescope find_files<cr>")
 nnoremap("<leader>lg", ":Telescope live_grep<cr>")
 nnoremap("<leader>lb", ":Telescope buffers<cr>")
