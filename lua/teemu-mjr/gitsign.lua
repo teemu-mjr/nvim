@@ -1,3 +1,21 @@
+local nnoremap = require("teemu-mjr.remap").nnoremap
+
+-- move between hunks
+nnoremap("<leader>gj", ":Gitsigns next_hunk<CR>")
+nnoremap("<leader>gk", ":Gitsigns prev_hunk<CR>")
+-- blame
+nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
+nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
+-- highlight
+nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
+-- reset hunk
+nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
+nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
+-- diff
+nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
+-- undotree
+nnoremap("<leader>u", ":UndotreeToggle<CR>")
+
 require("gitsigns").setup({
 	signs = {
 		add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },

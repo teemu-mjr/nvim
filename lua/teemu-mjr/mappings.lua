@@ -45,6 +45,8 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 -- copy to clipboard
 vnoremap("<leader>y", '"+y')
+-- delete to clipboard
+vnoremap("<leader>d", '"+d')
 
 -- visual block --
 -- move text up and down
@@ -52,26 +54,3 @@ xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
-
--- gitsigns --
--- move between hunks
-nnoremap("<leader>gj", ":Gitsigns next_hunk<CR>")
-nnoremap("<leader>gk", ":Gitsigns prev_hunk<CR>")
--- blame
-nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
-nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
--- highlight
-nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
--- reset hunk
-nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
-nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
--- diff
-nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
--- undotree
-nnoremap("<leader>u", ":UndotreeToggle<CR>")
-
--- telescope --
-nnoremap("<leader>lf", ":Telescope find_files<cr>")
-nnoremap("<leader>lg", ":Telescope live_grep<cr>")
-nnoremap("<leader>lb", ":Telescope buffers<cr>")
-nnoremap("<leader>lh", ":Telescope help_tags<cr>")
