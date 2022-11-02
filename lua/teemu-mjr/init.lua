@@ -13,7 +13,6 @@ require("teemu-mjr.buffline")
 require("teemu-mjr.toggleterm")
 require("teemu-mjr.telescope")
 
-require("teemu-mjr.whichkey")
 require("teemu-mjr.autopairs")
 require("teemu-mjr.autotag")
 
