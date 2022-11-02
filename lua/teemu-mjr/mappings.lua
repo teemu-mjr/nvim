@@ -6,7 +6,7 @@ local vnoremap = Remap.vnoremap
 -- visual block
 local xnoremap = Remap.xnoremap
 -- insert
-local inoremap = Remap.inoremap
+-- local inoremap = Remap.inoremap
 
 -- normal --
 -- open neotree
@@ -29,8 +29,8 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("<S-h>", ":bprevious<CR>")
 -- split
-nnoremap("<leader>ss", ":split<CR>")
-nnoremap("<leader>si", ":vsplit<CR>")
+nnoremap("<leader>sx", ":split<CR>")
+nnoremap("<leader>sv", ":vsplit<CR>")
 -- center cursor
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
@@ -52,10 +52,6 @@ xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
-
--- insert --
--- move to end of line in input mode
-inoremap("<C-a>", "<esc>A")
 
 -- gitsigns --
 -- move between hunks

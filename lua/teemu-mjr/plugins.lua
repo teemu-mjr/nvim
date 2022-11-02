@@ -22,13 +22,11 @@ return require("packer").startup(function()
 	--
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		"nvim-tree/nvim-tree.lua",
 		requires = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
+		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 	use({
 		"s1n7ax/nvim-window-picker",
