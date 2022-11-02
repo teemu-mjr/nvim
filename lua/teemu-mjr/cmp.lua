@@ -3,15 +3,13 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
-local select_opts = { behavior = cmp.SelectBehavior.Complete }
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-	preselect = cmp.PreselectMode.None,
+	preselect = cmp.PreselectMode.Item,
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
@@ -43,10 +41,18 @@ cmp.setup({
 		}),
 	},
 	mapping = {
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 
 		["<CR>"] = cmp.mapping.confirm(),
+		["<C-y>"] = cmp.mapping(function(fallback)
+			if not cmp.get_selected_entry() then
+				cmp.select_next_item()
+				cmp.confirm()
+			else
+				cmp.confirm()
+			end
+		end),
 
 		["<C-f>"] = cmp.mapping.scroll_docs(-4),
 		["<C-b>"] = cmp.mapping.scroll_docs(4),
@@ -79,7 +85,7 @@ cmp.setup({
 			local col = vim.fn.col(".") - 1
 
 			if cmp.visible() then
-				cmp.select_next_item(select_opts)
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
 			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
 				fallback()
 			else
@@ -89,7 +95,7 @@ cmp.setup({
 
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_prev_item(select_opts)
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Item })
 			else
 				fallback()
 			end
