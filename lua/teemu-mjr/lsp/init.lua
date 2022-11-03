@@ -50,6 +50,12 @@ lsp_config.sumneko_lua.setup({
 	},
 })
 
+lsp_config.rust_analyzer.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = general_on_attach,
+})
+
 lsp_config.clangd.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,

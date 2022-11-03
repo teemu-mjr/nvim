@@ -9,7 +9,7 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-	preselect = cmp.PreselectMode.Item,
+	preselect = cmp.PreselectMode.None,
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
@@ -41,8 +41,8 @@ cmp.setup({
 		}),
 	},
 	mapping = {
-		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Item }),
-		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Item }),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 
 		["<CR>"] = cmp.mapping.confirm(),
 
@@ -50,17 +50,20 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping.scroll_docs(4),
 
 		["<C-l>"] = cmp.mapping(function(fallback)
-			if cmp.get_selected_entry() then
-				cmp.confirm()
-            elseif cmp.visible() then
-				cmp.select_next_item()
-				cmp.confirm()
-			elseif luasnip.jumpable(1) then
-				luasnip.jump(1)
+			if cmp.visible() then
+				local entry = cmp.get_selected_entry()
+				if not entry then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					cmp.confirm()
+				elseif cmp.visible() then
+					cmp.confirm()
+				elseif luasnip.jumpable(1) then
+					luasnip.jump(1)
+				end
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { "i", "s", "c" }),
 
 		["<C-h>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
