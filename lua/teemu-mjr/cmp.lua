@@ -85,14 +85,10 @@ cmp.setup({
 		end),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
-			local col = vim.fn.col(".") - 1
-
 			if cmp.visible() then
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
-			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-				fallback()
 			else
-				cmp.complete()
+				fallback()
 			end
 		end, { "i", "s" }),
 
