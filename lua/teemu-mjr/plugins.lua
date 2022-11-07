@@ -49,8 +49,8 @@ return require("packer").startup(function()
 	use("nvim-lualine/lualine.nvim")
 	use("numToStr/Comment.nvim")
 	use("tpope/vim-surround")
-	use("qpkorr/vim-bufkill")
 
+    
 	-- Visual
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/nvim-treesitter-context")

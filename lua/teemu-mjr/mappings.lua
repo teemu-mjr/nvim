@@ -12,9 +12,9 @@ local xnoremap = Remap.xnoremap
 -- open neotree
 nnoremap("<leader>e", "<cmd>Neotree<CR>")
 -- buffer
-nnoremap("<leader>c", "<cmd>BD<CR>")
-nnoremap("<leader>C", "<cmd>BD!<CR>")
-nnoremap("<leader>bl", "<cmd>buffers<CR>")
+nnoremap("<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>")
+nnoremap("<leader>C", ":bp<bar>sp<bar>bn<bar>bd!<CR>")
+nnoremap("<leader>bl", ":buffers<CR>")
 -- better window navigation
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-j>", "<C-w>j")
