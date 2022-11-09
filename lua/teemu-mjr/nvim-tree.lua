@@ -33,7 +33,7 @@ require("nvim-tree").setup({
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = true,
-		signcolumn = "yes",
+		signcolumn = "number",
 		mappings = {
 			custom_only = false,
 			list = {
@@ -141,7 +141,7 @@ require("nvim-tree").setup({
 		},
 	},
 	filters = {
-		dotfiles = false,
+		dotfiles = true,
 		custom = {},
 		exclude = {},
 	},
@@ -151,7 +151,7 @@ require("nvim-tree").setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		show_on_dirs = true,
 		timeout = 400,
 	},
