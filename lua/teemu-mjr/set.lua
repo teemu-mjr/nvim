@@ -29,5 +29,5 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.cmd([[
-au TextYankPost * silent! lua vim.highlight.on_yank()
+au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 100 })
 ]])
