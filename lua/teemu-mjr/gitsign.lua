@@ -13,8 +13,6 @@ nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
 nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
 -- diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
--- undotree
-nnoremap("<leader>u", ":UndotreeToggle<CR>")
 
 require("gitsigns").setup({
 	signs = {

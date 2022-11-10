@@ -50,7 +50,6 @@ return require("packer").startup(function()
 	use("numToStr/Comment.nvim")
 	use("tpope/vim-surround")
 
-    
 	-- Visual
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/nvim-treesitter-context")
