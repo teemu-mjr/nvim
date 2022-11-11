@@ -68,6 +68,12 @@ lsp_config.tsserver.setup({
 	on_attach = null_ls_on_attach,
 })
 
+lsp_config.jsonls.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = null_ls_on_attach,
+})
+
 lsp_config.html.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
