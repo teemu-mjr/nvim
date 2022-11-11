@@ -28,9 +28,6 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 -- navigate buffers
 nnoremap("<S-l>", ":bnext<CR>")
 nnoremap("<S-h>", ":bprevious<CR>")
--- split
-nnoremap("<leader>sx", ":split<CR>")
-nnoremap("<leader>sv", ":vsplit<CR>")
 -- center cursor
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
