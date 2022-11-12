@@ -12,8 +12,16 @@ local xnoremap = Remap.xnoremap
 -- open neotree
 nnoremap("<leader>e", "<cmd>Neotree<CR>")
 -- buffer
-nnoremap("<leader>c", ":bp<bar>sp<bar>bn<bar>bd<CR>")
-nnoremap("<leader>C", ":bp<bar>sp<bar>bn<bar>bd!<CR>")
+function closeBuffer()
+	local fileStatus = vim.api.nvim_command_output("file")
+	if string.find(fileStatus, "Modified") then
+		print("You have unsaved changes!")
+	else
+		vim.cmd([[bp|sp|bn|bd]])
+	end
+end
+nnoremap("<leader>c", closeBuffer)
+nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>")
 nnoremap("<leader>bl", ":buffers<CR>")
 -- better window navigation
 nnoremap("<C-h>", "<C-w>h")
@@ -44,6 +52,8 @@ vnoremap(">", ">gv")
 vnoremap("<leader>y", '"+y')
 -- delete to clipboard
 vnoremap("<leader>d", '"+d')
+-- run selection with bash
+vnoremap("<leader>tb", ":'<,'>w !bash<CR>")
 
 -- visual block --
 -- move text up and down
