@@ -17,11 +17,6 @@ local general_on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true }
 	LspRemap.diagnostic(opts)
 	require("teemu-mjr.lsp.diagnostics").on_attach()
-
-	-- Higlights
-	if client.server_capabilities.documentHighlightProvider then
-		require("teemu-mjr.lsp.higlight").on_attach(bufnr)
-	end
 end
 
 -- Null-ls on attach that appends to general_on_attach
@@ -62,6 +57,12 @@ lsp_config.clangd.setup({
 	on_attach = general_on_attach,
 })
 
+lsp_config.gopls.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = general_on_attach,
+})
+
 lsp_config.tsserver.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
@@ -84,6 +85,12 @@ lsp_config.cssls.setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 	on_attach = null_ls_on_attach,
+})
+
+lsp_config.yamlls.setup({
+	flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = general_on_attach,
 })
 
 lsp_config.bashls.setup({
