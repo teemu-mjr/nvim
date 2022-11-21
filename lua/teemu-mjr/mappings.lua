@@ -43,6 +43,10 @@ nnoremap("<C-u>", "<C-u>zz")
 nnoremap("<leader>y", '"+y')
 -- paste from clipboard
 nnoremap("<leader>p", '"+p')
+-- make view
+nnoremap("<leader>zm", ":mkview<CR>")
+-- load view
+nnoremap("<leader>zl", ":loadview<CR>")
 
 -- visual --
 -- stay in indent mode
