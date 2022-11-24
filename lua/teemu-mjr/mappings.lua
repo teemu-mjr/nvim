@@ -43,6 +43,8 @@ nnoremap("<C-u>", "<C-u>zz")
 nnoremap("<leader>y", '"+y')
 -- paste from clipboard
 nnoremap("<leader>p", '"+p')
+-- paste up from clipboard
+nnoremap("<leader>P", '"+P')
 -- make view
 nnoremap("<leader>zm", ":mkview<CR>")
 -- load view
@@ -58,6 +60,8 @@ vnoremap("<leader>y", '"+y')
 vnoremap("<leader>d", '"+d')
 -- run selection with bash
 vnoremap("<leader>tb", ":w !bash<CR>", { silent = true })
+-- find and replace
+vnoremap("<leader>rr", "\"hy:%s/<C-r>h//gc<left><left><left>")
 
 -- visual block --
 -- move text up and down
