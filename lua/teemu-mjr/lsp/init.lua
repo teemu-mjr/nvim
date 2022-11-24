@@ -1,41 +1,53 @@
 local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
-local lsp_config = require("lspconfig")
-require("teemu-mjr.lsp.lsp-installer")
+local lspconfig = require("lspconfig")
+local lsp_installer = require("teemu-mjr.lsp.lsp-installer")
 require("teemu-mjr.lsp.null-ls")
 
--- Enable completion
+-- enable completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- General on attach
-local general_on_attach = function(client, bufnr)
-	-- General remap
+local null_ls_servers = { "tsserver", "jsonls", "cssls" }
+
+local on_attach = function(client, bufnr)
+	-- null-ls servers
+	for _, server in pairs(null_ls_servers) do
+		if client.name == server then
+			client.server_capabilities.documentFormattingProvider = false
+			break
+		end
+	end
+
+	-- general remap
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	LspRemap.general(bufopts)
 
-	-- Diagnostics remap
+	-- diagnostics remap
 	local opts = { noremap = true, silent = true }
 	LspRemap.diagnostic(opts)
-	require("teemu-mjr.lsp.diagnostics").on_attach()
-end
 
--- Null-ls on attach that appends to general_on_attach
-local null_ls_on_attach = function(client, bufnr)
-	client.server_capabilities.documentFormattingProvider = false
-	general_on_attach(client, bufnr)
+	require("teemu-mjr.lsp.diagnostics").on_attach()
 end
 
 local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
+-- install servers automatically
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+	lspconfig[server.name].setup({
+		on_attach = on_attach,
+	})
+end
+
 --
--- Setups servers --
+-- setups servers --
 --
-lsp_config.sumneko_lua.setup({
+
+lspconfig["sumneko_lua"].setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
-	on_attach = null_ls_on_attach,
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -45,71 +57,11 @@ lsp_config.sumneko_lua.setup({
 	},
 })
 
-lsp_config.rust_analyzer.setup({
+lspconfig["bashls"].setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
-	on_attach = general_on_attach,
-})
-
-lsp_config.clangd.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
-})
-
-lsp_config.gopls.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
-})
-
-lsp_config.tsserver.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = null_ls_on_attach,
-})
-
-lsp_config.jsonls.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = null_ls_on_attach,
-})
-
-lsp_config.html.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = null_ls_on_attach,
-})
-
-lsp_config.cssls.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = null_ls_on_attach,
-})
-
-lsp_config.yamlls.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
-})
-
-lsp_config.bashls.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
+	on_attach = on_attach,
 	bash = {
 		filetypes = { "sh" },
 	},
-})
-
-lsp_config.intelephense.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
-})
-
-lsp_config.ltex.setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = general_on_attach,
 })
