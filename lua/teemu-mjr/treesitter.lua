@@ -1,30 +1,25 @@
 require("nvim-treesitter.configs").setup({
-	-- A list of parser names, or "all"
-	ensure_installed = "all",
-
-	-- List of parsers to ignore installing (for "all")
-	ignore_install = {},
-
-	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
-
-	-- Automatically install missing parsers when entering buffer
-	auto_install = false,
-
-	indent = {
-		enable = true,
-	},
-
-	highlight = {
-		-- `false` will disable the whole extension
-		enable = true,
-
-		-- list of language that will be disabled
-		disable = {},
-
-		-- Instead of true it can also be a list of languages
-		additional_vim_regex_highlighting = false,
-	},
+    ensure_installed = "all",
+    ignore_install = {},
+    auto_install = false,
+    autotag = {
+        disable = {},
+        enable = true,
+        module_path = "nvim-ts-autotag.internal",
+    },
+    highlight = {
+        additional_vim_regex_highlighting = true,
+        custom_captures = {},
+        disable = {},
+        enable = true,
+        loaded = false,
+        module_path = "nvim-treesitter.highlight",
+    },
+    indent = {
+        disable = {},
+        enable = true,
+        loaded = true,
+    },
 })
 
 -- Automatic folding
