@@ -7,37 +7,39 @@ require("teemu-mjr.lsp.null-ls")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local null_ls_servers = { "tsserver", "jsonls", "cssls" }
+local null_ls_servers = { "tsserver", "vuels", "jsonls", "cssls" }
 
 local on_attach = function(client, bufnr)
-	-- null-ls servers
-	for _, server in pairs(null_ls_servers) do
-		if client.name == server then
-			client.server_capabilities.documentFormattingProvider = false
-			break
-		end
-	end
+    -- null-ls servers
+    for _, server in pairs(null_ls_servers) do
+        if client.name == server then
+            client.server_capabilities.documentFormattingProvider = false
+            break
+        end
+    end
 
-	-- general remap
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	LspRemap.general(bufopts)
+    -- general remap
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    LspRemap.general(bufopts)
 
-	-- diagnostics remap
-	local opts = { noremap = true, silent = true }
-	LspRemap.diagnostic(opts)
+    -- diagnostics remap
+    local opts = { noremap = true, silent = true }
+    LspRemap.diagnostic(opts)
 
-	require("teemu-mjr.lsp.diagnostics").on_attach()
+    require("teemu-mjr.lsp.diagnostics").on_attach()
 end
 
 local lsp_flags = {
-	debounce_text_changes = 150,
+    debounce_text_changes = 150,
 }
 
 -- install servers automatically
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
-	lspconfig[server.name].setup({
-		on_attach = on_attach,
-	})
+    lspconfig[server.name].setup({
+        flags = lsp_flags,
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
 end
 
 --
@@ -45,23 +47,23 @@ end
 --
 
 lspconfig["sumneko_lua"].setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim", "use" },
-			},
-		},
-	},
+    flags = lsp_flags,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim", "use" },
+            },
+        },
+    },
 })
 
 lspconfig["bashls"].setup({
-	flags = lsp_flags,
-	capabilities = capabilities,
-	on_attach = on_attach,
-	bash = {
-		filetypes = { "sh" },
-	},
+    flags = lsp_flags,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    bash = {
+        filetypes = { "sh" },
+    },
 })
