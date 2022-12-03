@@ -13,13 +13,14 @@ local xnoremap = Remap.xnoremap
 nnoremap("<leader>e", "<cmd>Neotree<CR>")
 -- buffer
 local function closeBuffer()
-	local fileStatus = vim.api.nvim_command_output("file")
-	if string.find(fileStatus, "Modified") then
-		print("You have unsaved changes!")
-	else
-		vim.cmd([[bp|sp|bn|bd]])
-	end
+    local fileStatus = vim.api.nvim_command_output("file")
+    if string.find(fileStatus, "Modified") then
+        print("You have unsaved changes!")
+    else
+        vim.cmd([[bp|sp|bn|bd]])
+    end
 end
+
 nnoremap("<leader>c", closeBuffer)
 nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>")
 nnoremap("<leader>bl", ":buffers<CR>")
@@ -39,6 +40,9 @@ nnoremap("<S-h>", ":bprevious<CR>")
 -- center cursor
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("n", "nzz")
+nnoremap("N", "Nzz")
+
 -- copy to clipboard
 nnoremap("<leader>y", '"+y')
 -- paste from clipboard
@@ -61,7 +65,7 @@ vnoremap("<leader>d", '"+d')
 -- run selection with bash
 vnoremap("<leader>tb", ":w !bash<CR>", { silent = true })
 -- find and replace
-vnoremap("<leader>rr", "\"hy:%s/<C-r>h//gc<left><left><left>")
+vnoremap("<leader>rr", '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- visual block --
 -- move text up and down
