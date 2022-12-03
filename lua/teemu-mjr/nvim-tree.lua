@@ -131,11 +131,13 @@ require("nvim-tree").setup({
     },
     diagnostics = {
         enable = true,
-        show_on_dirs = false,
+        show_on_dirs = true,
         debounce_delay = 50,
         icons = {
-            hint = "",
-            info = "",
+            hint = "",
+            -- hint = "",
+            info = "",
+            -- info = "",
             warning = "",
             error = "",
         },
@@ -177,7 +179,7 @@ require("nvim-tree").setup({
         },
         open_file = {
             quit_on_open = false,
-            resize_window = false,
+            resize_window = true,
             window_picker = {
                 enable = true,
                 chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
