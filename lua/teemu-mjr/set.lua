@@ -23,6 +23,7 @@ vim.opt.cmdheight = 1
 vim.opt.signcolumn = "yes"
 vim.opt.encoding = "utf8"
 vim.opt.hidden = true
+vim.opt.swapfile = false
 vim.opt.backup = false
 vim.g.nowritebackup = true
 vim.opt.updatetime = 50
