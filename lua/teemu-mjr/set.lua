@@ -18,7 +18,7 @@ vim.opt.relativenumber = true
 
 vim.opt.splitright = true
 
--- vim.opt.winbar = "%f"
+-- vim.opt.winbar = "%t"
 vim.opt.cmdheight = 1
 vim.opt.signcolumn = "yes"
 vim.opt.encoding = "utf8"
@@ -29,6 +29,7 @@ vim.g.nowritebackup = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
+-- higlight on yank
 vim.cmd([[
 au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 100 })
 ]])
