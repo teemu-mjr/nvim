@@ -30,7 +30,7 @@ lsp_installer.setup({
 		},
 		keymaps = {
 			-- Keymap to expand a server in the UI
-			toggle_server_expand = "o",
+			toggle_server_expand = "<CR>",
 			-- Keymap to install the server under the current cursor position
 			install_server = "i",
 			-- Keymap to reinstall/update the server under the current cursor position

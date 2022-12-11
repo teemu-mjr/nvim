@@ -29,14 +29,9 @@ local on_attach = function(client, bufnr)
     require("teemu-mjr.lsp.diagnostics").on_attach()
 end
 
-local lsp_flags = {
-    debounce_text_changes = 150,
-}
-
 -- install servers automatically
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
     lspconfig[server.name].setup({
-        flags = lsp_flags,
         capabilities = capabilities,
         on_attach = on_attach,
     })
@@ -47,7 +42,6 @@ end
 --
 
 lspconfig["sumneko_lua"].setup({
-    flags = lsp_flags,
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
@@ -60,7 +54,6 @@ lspconfig["sumneko_lua"].setup({
 })
 
 lspconfig["bashls"].setup({
-    flags = lsp_flags,
     capabilities = capabilities,
     on_attach = on_attach,
     bash = {
