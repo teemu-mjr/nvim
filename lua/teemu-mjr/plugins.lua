@@ -16,8 +16,6 @@ return require("packer").startup(function()
 
 	-- Snippets
 	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
-	use("rafamadriz/friendly-snippets")
 
 	--
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
@@ -56,7 +54,6 @@ return require("packer").startup(function()
 	use("lewis6991/gitsigns.nvim")
 	use("akinsho/bufferline.nvim")
 	-- Theme
-	-- use("gruvbox-community/gruvbox")
 	-- use("folke/tokyonight.nvim")
 	use("joshdick/onedark.vim")
 end)

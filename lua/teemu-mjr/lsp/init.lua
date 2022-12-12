@@ -6,7 +6,6 @@ require("teemu-mjr.lsp.null-ls")
 -- enable completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local null_ls_servers = { "tsserver", "vuels", "jsonls", "cssls" }
 
 local on_attach = function(client, bufnr)
@@ -17,6 +16,13 @@ local on_attach = function(client, bufnr)
             break
         end
     end
+
+    -- hover config
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+    -- signatureHelp config
+    vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
     -- general remap
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
