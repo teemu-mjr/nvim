@@ -1,6 +1,6 @@
 require("teemu-mjr.set")
 require("teemu-mjr.mappings")
-require("teemu-mjr.plugins")
+require("teemu-mjr.packer")
 
 require("teemu-mjr.lsp")
 require("teemu-mjr.cmp")
