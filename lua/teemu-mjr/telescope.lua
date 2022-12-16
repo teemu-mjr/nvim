@@ -1,14 +1,23 @@
 local nnoremap = require("teemu-mjr.remap").nnoremap
 
-nnoremap("<leader>lf", ":Telescope find_files<cr>")
-nnoremap("<leader>lg", ":Telescope live_grep<cr>")
-nnoremap("<leader>lb", ":Telescope buffers<cr>")
-nnoremap("<leader>lh", ":Telescope help_tags<cr>")
+local builtin = require("telescope.builtin")
+nnoremap("<leader>lf", builtin.find_files)
+nnoremap("<leader>lg", builtin.git_files)
+nnoremap("<leader>la", builtin.live_grep)
+nnoremap("<leader>ls", function()
+    builtin.grep_string({ search = vim.fn.input("Search: ") })
+end)
+nnoremap("<leader>lb", builtin.buffers)
+nnoremap("<leader>lh", builtin.help_tags)
 
 require("telescope").setup({
-	defaults = {
-		mappings = {},
-	},
-	pickers = {},
-	extensions = {},
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-h>"] = "select_horizontal",
+            },
+        },
+    },
+    pickers = {},
+    extensions = {},
 })
