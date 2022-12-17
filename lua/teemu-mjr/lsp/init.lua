@@ -1,6 +1,9 @@
 local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
 local lspconfig = require("lspconfig")
-local lsp_installer = require("teemu-mjr.lsp.lsp-installer")
+require("mason").setup()
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+})
 require("teemu-mjr.lsp.null-ls")
 
 -- enable completion
@@ -35,18 +38,19 @@ local on_attach = function(client, bufnr)
     require("teemu-mjr.lsp.diagnostics").on_attach()
 end
 
--- install servers automatically
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    lspconfig[server.name].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-    })
-end
+-- setup servers automatically
+require("mason-lspconfig").setup_handlers({
+    function(server_name)
+        require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+    end,
+})
 
 --
 -- setups servers --
 --
-
 lspconfig["sumneko_lua"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
