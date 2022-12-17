@@ -15,6 +15,7 @@ vim.opt.wrap = true
 vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.foldlevelstart = 99
 
 vim.opt.splitright = true
 

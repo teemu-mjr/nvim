@@ -49,10 +49,6 @@ nnoremap("<leader>y", '"+y')
 nnoremap("<leader>p", '"+p')
 -- paste up from clipboard
 nnoremap("<leader>P", '"+P')
--- make view
-nnoremap("<leader>zm", ":mkview<CR>")
--- load view
-nnoremap("<leader>zl", ":loadview<CR>")
 
 -- visual --
 -- stay in indent mode
