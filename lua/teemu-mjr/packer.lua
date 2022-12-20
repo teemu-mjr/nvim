@@ -1,26 +1,34 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
 
-    -- Completion
-    use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-}
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
-    use("onsails/lspkind.nvim")
+    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+    use("nvim-treesitter/nvim-treesitter-context")
 
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
-    use("jose-elias-alvarez/null-ls.nvim")
+    use({
+        "neovim/nvim-lspconfig",
+        requires = {
+            -- lsp support
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
 
-    -- Snippets
-    use("L3MON4D3/LuaSnip")
+            -- null-ls
+            { "jose-elias-alvarez/null-ls.nvim" },
 
-    --
+            -- autocompletion
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
+
+            -- snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
+        },
+    })
+
     use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
     use({
         "nvim-tree/nvim-tree.lua",
@@ -44,19 +52,19 @@ return require("packer").startup(function()
             "sindrets/diffview.nvim",
         },
     })
+
+    use("tpope/vim-surround")
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
-    use("akinsho/toggleterm.nvim")
-    use("nvim-lualine/lualine.nvim")
-    use("numToStr/Comment.nvim")
-    use("tpope/vim-surround")
 
-    -- Visual
-    use("nvim-treesitter/nvim-treesitter")
-    use("nvim-treesitter/nvim-treesitter-context")
-    use("lewis6991/gitsigns.nvim")
+    use("akinsho/toggleterm.nvim")
+
+    use("nvim-lualine/lualine.nvim")
     use("akinsho/bufferline.nvim")
+    use("lewis6991/gitsigns.nvim")
+
+    use("numToStr/Comment.nvim")
+
     -- Theme
-    -- use("folke/tokyonight.nvim")
     use("joshdick/onedark.vim")
 end)

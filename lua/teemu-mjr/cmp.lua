@@ -1,7 +1,9 @@
 require("luasnip.loaders.from_vscode").lazy_load()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
+
+vim.opt.pumwidth = 40
+vim.opt.pumheight = 10
 
 cmp.setup({
     snippet = {
@@ -12,7 +14,6 @@ cmp.setup({
     preselect = cmp.PreselectMode.None,
     sources = {
         { name = "path" },
-        { name = "nvim_lsp" },
         {
             name = "buffer",
             option = {
@@ -23,6 +24,7 @@ cmp.setup({
             keyword_length = 2,
         },
         { name = "luasnip" },
+        { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
     },
     window = {
@@ -30,15 +32,16 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol", -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-            maxwidth = 30,
-            ellipsis_char = "...",
-            -- (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-            before = function(entry, vim_item)
-                return vim_item
-            end,
-        }),
+        format = function(entry, vim_item)
+            vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+            vim_item.kind = string.sub(vim_item.kind, 1, 3)
+            vim_item.menu = ({
+                luasnip = "[LUA]",
+                nvim_lsp = "[LSP]",
+                buffer = "[BUF]",
+            })[entry.source.name]
+            return vim_item
+        end,
     },
     mapping = {
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Item }),
