@@ -60,7 +60,6 @@ return require("packer").startup(function()
     use("akinsho/toggleterm.nvim")
 
     use("nvim-lualine/lualine.nvim")
-    use("akinsho/bufferline.nvim")
     use("lewis6991/gitsigns.nvim")
 
     use("numToStr/Comment.nvim")

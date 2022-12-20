@@ -1,18 +1,19 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = "all",
+    ensure_installed = {},
     auto_install = true,
     autotag = {
-        disable = {},
         enable = true,
+        disable = {},
         module_path = "nvim-ts-autotag.internal",
     },
     highlight = {
         enable = true,
+        disable = {},
         additional_vim_regex_highlighting = false,
     },
     indent = {
-        disable = {},
         enable = true,
+        disable = {},
         loaded = true,
     },
 })
