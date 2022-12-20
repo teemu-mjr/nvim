@@ -65,7 +65,7 @@ vnoremap("<leader>rr", '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- visual block --
 -- move text up and down
-xnoremap("J", ":move '>+1<CR>gv-gv")
-xnoremap("K", ":move '<-2<CR>gv-gv")
-xnoremap("<A-j>", ":move '>+1<CR>gv-gv")
-xnoremap("<A-k>", ":move '<-2<CR>gv-gv")
+xnoremap("J", ":move '>+1<CR>gv=gv")
+xnoremap("K", ":move '<-2<CR>gv=gv")
+xnoremap("<A-j>", ":move '>+1<CR>gv=gv")
+xnoremap("<A-k>", ":move '<-2<CR>gv=gv")
