@@ -1,22 +1,15 @@
-function SetOnedark()
-	vim.opt.background = "dark"
-	vim.g.onedark_hide_endofbuffer = 0
-	vim.g.onedark_terminal_italics = 1
-	vim.o.termguicolors = true
+function SetColors(color)
+    vim.opt.background = "dark"
+    vim.o.cursorline = true
+    vim.o.termguicolors = true
+    vim.o.t_Co = 256
 
-    vim.cmd([[
-    augroup colorset
-    autocmd!
-    let s:white = { "gui": "#FFFFFF", "cterm": "145", "cterm16" : "7" }
-    let s:gray = { "gui": "#656565", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("CursorLine", {})
-    autocmd ColorScheme * call onedark#set_highlight("CursorLineNr", { "fg": s:white })
-    autocmd ColorScheme * call onedark#set_highlight("Search", { "bg": s:gray, "fg": s:white })
-    augroup END
+    color = color or "onedark"
+    vim.cmd.colorscheme(color)
 
-    colo onedark
-    set cursorline
-    ]])
+    vim.api.nvim_set_hl(0, "CursorLine", {})
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "white" })
+    vim.api.nvim_set_hl(0, "Search", { fg = "white", bg = "gray" })
 end
 
-SetOnedark()
+SetColors()
