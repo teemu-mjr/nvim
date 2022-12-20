@@ -6,7 +6,7 @@ local vnoremap = Remap.vnoremap
 -- visual block
 local xnoremap = Remap.xnoremap
 -- insert
--- local inoremap = Remap.inoremap
+local inoremap = Remap.inoremap
 
 -- normal --
 -- open neotree
@@ -64,8 +64,14 @@ vnoremap("<leader>tb", ":w !bash<CR>", { silent = true })
 vnoremap("<leader>rr", '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- visual block --
+-- paste over without losing current
+xnoremap("<leader>o", '"_dP')
 -- move text up and down
 xnoremap("J", ":move '>+1<CR>gv=gv")
 xnoremap("K", ":move '<-2<CR>gv=gv")
 xnoremap("<A-j>", ":move '>+1<CR>gv=gv")
 xnoremap("<A-k>", ":move '<-2<CR>gv=gv")
+
+-- insert --
+-- <C-c> for the win
+inoremap("<C-c>", "<Esc>")
