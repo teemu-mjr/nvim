@@ -65,5 +65,5 @@ return require("packer").startup(function()
     use("numToStr/Comment.nvim")
 
     -- Theme
-    use("joshdick/onedark.vim")
+    use("navarasu/onedark.nvim")
 end)
