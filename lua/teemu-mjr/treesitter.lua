@@ -1,6 +1,7 @@
 require("nvim-treesitter.configs").setup({
     ensure_installed = {},
     auto_install = true,
+    ignore_install = { "gitignore" },
     autotag = {
         enable = true,
         disable = {},
