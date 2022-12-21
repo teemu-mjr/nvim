@@ -66,4 +66,5 @@ return require("packer").startup(function()
 
     -- Theme
     use("joshdick/onedark.vim")
+    use("EdenEast/nightfox.nvim")
 end)
