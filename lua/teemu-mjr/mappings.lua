@@ -49,6 +49,8 @@ nnoremap("<leader>y", '"+y')
 nnoremap("<leader>p", '"+p')
 -- paste up from clipboard
 nnoremap("<leader>P", '"+P')
+-- delete without yank
+nnoremap("<leader>d", '"_d')
 
 -- visual --
 -- stay in indent mode
@@ -56,8 +58,8 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 -- copy to clipboard
 vnoremap("<leader>y", '"+y')
--- delete to clipboard
-vnoremap("<leader>d", '"+d')
+-- delete without yank
+vnoremap("<leader>d", '"_d')
 -- run selection with bash
 vnoremap("<leader>tb", ":w !bash<CR>", { silent = true })
 -- find and replace
