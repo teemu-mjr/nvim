@@ -13,7 +13,8 @@ cmp.setup({
     },
     preselect = cmp.PreselectMode.None,
     sources = {
-        { name = "path" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lsp" },
         {
             name = "buffer",
             option = {
@@ -24,8 +25,7 @@ cmp.setup({
             keyword_length = 2,
         },
         { name = "luasnip" },
-        { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help" },
+        { name = "path" },
     },
     window = {
         -- completion = cmp.config.window.bordered(),
