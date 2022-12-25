@@ -23,7 +23,7 @@ end
 M.diagnostic = function(opts)
     nnoremap("<leader>rD", ":lua vim.diagnostic.disable()<cr>", opts)
     nnoremap("<leader>rE", ":lua vim.diagnostic.enable()<cr>", opts)
-    nnoremap("<leader>rf", ":lua vim.diagnostic.open_float()<cr>", opts)
+    nnoremap("<leader>rr", ":lua vim.diagnostic.open_float()<cr>", opts)
     nnoremap("<leader>rk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
     nnoremap("<leader>rj", ":lua vim.diagnostic.goto_next()<cr>", opts)
     nnoremap("<leader>rl", ":lua vim.diagnostic.setloclist()<cr>", opts)
