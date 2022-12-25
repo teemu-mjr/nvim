@@ -21,12 +21,12 @@ M.general = function(bufopts)
 end
 
 M.diagnostic = function(opts)
-    nnoremap("<leader>fD", ":lua vim.diagnostic.disable()<cr>", opts)
-    nnoremap("<leader>fE", ":lua vim.diagnostic.enable()<cr>", opts)
-    nnoremap("<leader>ff", ":lua vim.diagnostic.open_float()<cr>", opts)
-    nnoremap("<leader>fk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
-    nnoremap("<leader>fj", ":lua vim.diagnostic.goto_next()<cr>", opts)
-    nnoremap("<leader>fl", ":lua vim.diagnostic.setloclist()<cr>", opts)
+    nnoremap("<leader>rD", ":lua vim.diagnostic.disable()<cr>", opts)
+    nnoremap("<leader>rE", ":lua vim.diagnostic.enable()<cr>", opts)
+    nnoremap("<leader>rf", ":lua vim.diagnostic.open_float()<cr>", opts)
+    nnoremap("<leader>rk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
+    nnoremap("<leader>rj", ":lua vim.diagnostic.goto_next()<cr>", opts)
+    nnoremap("<leader>rl", ":lua vim.diagnostic.setloclist()<cr>", opts)
 end
 
 return M
