@@ -10,7 +10,7 @@ null_ls.setup({
 			extra_args = {
 				"--semi",
 				"--double-quote",
-				"--jsx-double-quite",
+				"--jsx-double-quote",
 				"--tab-width=2",
 			},
 		}),
