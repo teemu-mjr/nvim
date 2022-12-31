@@ -10,11 +10,16 @@ local inoremap = Remap.inoremap
 
 -- normal --
 -- toggle file explorer
-nnoremap("<leader>e", ":NvimTreeToggle<CR>")
+nnoremap("<leader>e", ":Rex<CR>")
+vim.api.nvim_create_autocmd("filetype", {
+    pattern = "netrw",
+    desc = "Custom netrm keymaps",
+    callback = function()
+        vim.keymap.set("n", "o", "<cr>", { remap = true, buffer = true })
+    end,
+})
 -- toggle neogit
 nnoremap("<leader>gG", ":Neogit<CR>")
--- toggle zen-mode
-nnoremap("<leader>z", ":ZenMode<CR>", { silent = true })
 -- toggle undotree
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
 -- close buffer
@@ -23,12 +28,12 @@ local function closeBuffer()
     if string.find(fileStatus, "Modified") then
         print("You have unsaved changes!")
     else
-        vim.cmd([[bp|sp|bn|bd]])
+        vim.api.nvim_command([[bp|sp|bn|bd]])
     end
 end
+
 nnoremap("<leader>c", closeBuffer)
-nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>")
-nnoremap("<leader>bl", ":buffers<CR>")
+nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>", { silent = true })
 -- better window navigation
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-j>", "<C-w>j")
@@ -39,9 +44,6 @@ nnoremap("<C-Up>", ":resize -2<CR>")
 nnoremap("<C-Down>", ":resize +2<CR>")
 nnoremap("<C-Left>", ":vertical resize -2<CR>")
 nnoremap("<C-Right>", ":vertical resize +2<CR>")
--- navigate buffers
-nnoremap("<S-l>", ":bnext<CR>")
-nnoremap("<S-h>", ":bprevious<CR>")
 -- center cursor
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
@@ -69,7 +71,6 @@ nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
 nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
 -- diff
 nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
-
 
 -- visual --
 -- stay in indent mode
