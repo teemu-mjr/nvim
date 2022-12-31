@@ -30,6 +30,13 @@ vim.g.nowritebackup = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
+vim.g.netrw_banner = 1
+vim.g.netrw_hide = 1
+vim.cmd([[
+let g:netrw_list_hide = netrw_gitignore#Hide()
+]])
+vim.g.netrw_list_hide = vim.g.netrw_list_hide .. ",\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+
 -- quit if last buffer is a nofile buffer
 vim.cmd([[
 au BufEnter * call MyLastWindow()
