@@ -21,7 +21,9 @@ function SetColor(color)
     vim.api.nvim_set_hl(0, "CursorLine", {})
     vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "white" })
     vim.api.nvim_set_hl(0, "Search", { fg = "white", bg = "gray" })
-    vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "none" })
+    vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "none", bold = true })
+
+    vim.api.nvim_set_hl(0, "netrwMarkFile", { fg = "white", bg = "gray" })
 end
 
 SetColor()
