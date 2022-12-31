@@ -20,6 +20,8 @@ vim.api.nvim_create_autocmd("filetype", {
 })
 -- toggle neogit
 nnoremap("<leader>gG", ":Neogit<CR>")
+-- getto ass zen-mode
+nnoremap("<leader>z", ":vnew<CR>:set filetype=gettozen<CR><C-w>w<C-w>r", { silent = true })
 -- toggle undotree
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
 -- close buffer
