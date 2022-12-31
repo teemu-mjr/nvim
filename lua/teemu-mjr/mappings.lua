@@ -6,11 +6,11 @@ local vnoremap = Remap.vnoremap
 -- visual block
 local xnoremap = Remap.xnoremap
 -- insert
-local inoremap = Remap.inoremap
+-- local inoremap = Remap.inoremap
 
 -- normal --
 -- toggle file explorer
-nnoremap("<leader>e", ":Rex<CR>")
+nnoremap("<leader>e", ":Rex<cr>", { silent = true })
 vim.api.nvim_create_autocmd("filetype", {
     pattern = "netrw",
     desc = "Custom netrm keymaps",
@@ -19,11 +19,11 @@ vim.api.nvim_create_autocmd("filetype", {
     end,
 })
 -- toggle neogit
-nnoremap("<leader>gG", ":Neogit<CR>")
+nnoremap("<leader>gG", ":Neogit<cr>")
 -- getto ass zen-mode
-nnoremap("<leader>z", ":vnew<CR>:set filetype=gettozen<CR><C-w>w<C-w>r", { silent = true })
+nnoremap("<leader>z", ":vnew zen<cr><c-w>H:set filetype=gettozen<cr><c-w>l", { silent = true })
 -- toggle undotree
-nnoremap("<leader>u", ":UndotreeToggle<CR>")
+nnoremap("<leader>u", ":UndotreeToggle<cr>")
 -- close buffer
 local function closeBuffer()
     local fileStatus = vim.api.nvim_command_output("file")
@@ -35,20 +35,20 @@ local function closeBuffer()
 end
 
 nnoremap("<leader>c", closeBuffer)
-nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>", { silent = true })
+nnoremap("<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
 -- better window navigation
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-l>", "<C-w>l")
+nnoremap("<c-h>", "<c-w>h")
+nnoremap("<c-j>", "<c-w>j")
+nnoremap("<c-k>", "<c-w>k")
+nnoremap("<c-l>", "<c-w>l")
 -- resize with arrows
-nnoremap("<C-Up>", ":resize -2<CR>")
-nnoremap("<C-Down>", ":resize +2<CR>")
-nnoremap("<C-Left>", ":vertical resize -2<CR>")
-nnoremap("<C-Right>", ":vertical resize +2<CR>")
+nnoremap("<c-Up>", ":resize -2<cr>")
+nnoremap("<c-Down>", ":resize +2<cr>")
+nnoremap("<c-Left>", ":vertical resize -2<cr>")
+nnoremap("<c-Right>", ":vertical resize +2<cr>")
 -- center cursor
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<c-d>", "<c-d>zz")
+nnoremap("<c-u>", "<c-u>zz")
 nnoremap("n", "nzz")
 nnoremap("N", "Nzz")
 -- copy to clipboard
@@ -61,18 +61,18 @@ nnoremap("<leader>P", '"+P')
 nnoremap("<leader>d", '"_d')
 -- gitsign
 -- move between hunks
-nnoremap("<leader>gj", ":Gitsigns next_hunk<CR>")
-nnoremap("<leader>gk", ":Gitsigns prev_hunk<CR>")
+nnoremap("<leader>gj", ":Gitsigns next_hunk<cr>")
+nnoremap("<leader>gk", ":Gitsigns prev_hunk<cr>")
 -- blame
-nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
-nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
+nnoremap("<leader>gb", ":Gitsigns blame_line<cr>")
+nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<cr>")
 -- highlight
-nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
+nnoremap("<leader>gh", ":Gitsigns toggle_linehl<cr>")
 -- reset hunk
-nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
-nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
+nnoremap("<leader>gr", ":Gitsigns reset_hunk<cr>")
+nnoremap("<leader>gR", ":Gitsigns reset_buffer<cr>")
 -- diff
-nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
+nnoremap("<leader>gd", ":Gitsigns diffthis<cr>")
 
 -- visual --
 -- stay in indent mode
@@ -83,19 +83,15 @@ vnoremap("<leader>y", '"+y')
 -- delete without yank
 vnoremap("<leader>d", '"_d')
 -- run selection with bash
-vnoremap("<leader>tb", ":w !bash<CR>", { silent = true })
+vnoremap("<leader>tb", ":w !bash<cr>", { silent = true })
 -- find and replace
-vnoremap("<leader>rr", '"hy:%s/<C-r>h//gc<left><left><left>')
+vnoremap("<leader>rr", '"hy:%s/<c-r>h//gc<left><left><left>')
 
 -- visual block --
 -- paste over without losing current
 xnoremap("<leader>o", '"_dP')
 -- move text up and down
-xnoremap("J", ":move '>+1<CR>gv=gv")
-xnoremap("K", ":move '<-2<CR>gv=gv")
-xnoremap("<A-j>", ":move '>+1<CR>gv=gv")
-xnoremap("<A-k>", ":move '<-2<CR>gv=gv")
-
--- insert --
--- <C-c> for the win
-inoremap("<C-c>", "<Esc>")
+xnoremap("J", ":move '>+1<cr>gv=gv")
+xnoremap("K", ":move '<-2<cr>gv=gv")
+xnoremap("<A-j>", ":move '>+1<cr>gv=gv")
+xnoremap("<A-k>", ":move '<-2<cr>gv=gv")

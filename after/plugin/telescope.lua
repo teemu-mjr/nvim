@@ -14,7 +14,7 @@ require("telescope").setup({
     defaults = {
         mappings = {
             i = {
-                ["<C-h>"] = "select_horizontal",
+                ["<c-h>"] = "select_horizontal",
             },
         },
     },

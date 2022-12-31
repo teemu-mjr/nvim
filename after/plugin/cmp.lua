@@ -44,18 +44,18 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Item }),
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Item }),
+        ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Item }),
+        ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Item }),
 
-        ["<C-j>"] = cmp.mapping.confirm({
+        ["<c-j>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
 
-        ["<C-f>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-b>"] = cmp.mapping.scroll_docs(4),
+        ["<c-f>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-b>"] = cmp.mapping.scroll_docs(4),
 
-        ["<C-l>"] = cmp.mapping(function(fallback)
+        ["<c-l>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 local entry = cmp.get_selected_entry()
                 if not entry then
@@ -71,7 +71,7 @@ cmp.setup({
             end
         end, { "i", "s", "c" }),
 
-        ["<C-h>"] = cmp.mapping(function(fallback)
+        ["<c-h>"] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
@@ -79,7 +79,7 @@ cmp.setup({
             end
         end, { "i", "s" }),
 
-        ["<C-Space>"] = cmp.mapping(function()
+        ["<c-Space>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.close()
             else

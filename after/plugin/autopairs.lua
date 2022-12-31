@@ -10,7 +10,7 @@ require("nvim-autopairs").setup({
 	break_undo = true, -- switch for basic rule break undo sequence
 	check_ts = true,
 	map_cr = true,
-	map_bs = true, -- map the <BS> key
-	map_c_h = false, -- Map the <C-h> key to delete a pair
+	map_bs = true, -- map the <bs> key
+	map_c_h = false, -- Map the <c-h> key to delete a pair
 	map_c_w = false, -- map <c-w> to delete a pair if possible
 })
