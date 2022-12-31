@@ -9,9 +9,15 @@ local xnoremap = Remap.xnoremap
 local inoremap = Remap.inoremap
 
 -- normal --
--- open neotree
-nnoremap("<leader>e", "<cmd>Neotree<CR>")
--- buffer
+-- toggle file explorer
+nnoremap("<leader>e", ":NvimTreeToggle<CR>")
+-- toggle neogit
+nnoremap("<leader>gG", ":Neogit<CR>")
+-- toggle zen-mode
+nnoremap("<leader>z", ":ZenMode<CR>", { silent = true })
+-- toggle undotree
+nnoremap("<leader>u", ":UndotreeToggle<CR>")
+-- close buffer
 local function closeBuffer()
     local fileStatus = vim.api.nvim_command_output("file")
     if string.find(fileStatus, "Modified") then
@@ -20,7 +26,6 @@ local function closeBuffer()
         vim.cmd([[bp|sp|bn|bd]])
     end
 end
-
 nnoremap("<leader>c", closeBuffer)
 nnoremap("<leader>C", ":bp|sp|bn|bd!<CR>")
 nnoremap("<leader>bl", ":buffers<CR>")
@@ -42,7 +47,6 @@ nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 nnoremap("n", "nzz")
 nnoremap("N", "Nzz")
-
 -- copy to clipboard
 nnoremap("<leader>y", '"+y')
 -- paste from clipboard
@@ -51,6 +55,21 @@ nnoremap("<leader>p", '"+p')
 nnoremap("<leader>P", '"+P')
 -- delete without yank
 nnoremap("<leader>d", '"_d')
+-- gitsign
+-- move between hunks
+nnoremap("<leader>gj", ":Gitsigns next_hunk<CR>")
+nnoremap("<leader>gk", ":Gitsigns prev_hunk<CR>")
+-- blame
+nnoremap("<leader>gb", ":Gitsigns blame_line<CR>")
+nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<CR>")
+-- highlight
+nnoremap("<leader>gh", ":Gitsigns toggle_linehl<CR>")
+-- reset hunk
+nnoremap("<leader>gr", ":Gitsigns reset_hunk<CR>")
+nnoremap("<leader>gR", ":Gitsigns reset_buffer<CR>")
+-- diff
+nnoremap("<leader>gd", ":Gitsigns diffthis<CR>")
+
 
 -- visual --
 -- stay in indent mode

@@ -11,7 +11,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -29,6 +29,20 @@ vim.opt.backup = false
 vim.g.nowritebackup = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
+
+-- quit if last buffer is a nofile buffer
+vim.cmd([[
+au BufEnter * call MyLastWindow()
+function! MyLastWindow()
+  " if the window is quickfix go on
+  if &buftype=="nofile"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
+]])
 
 -- higlight on yank
 vim.cmd([[

@@ -6,10 +6,6 @@ require("mason-lspconfig").setup({
 })
 require("teemu-mjr.lsp.null-ls")
 
--- enable completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local on_attach = function(client, bufnr)
     -- hover config
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
@@ -33,17 +29,12 @@ end
 require("mason-lspconfig").setup_handlers({
     function(server_name)
         require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
             on_attach = on_attach,
         })
     end,
 
-    --
-    -- setups servers --
-    --
     ["sumneko_lua"] = function()
         lspconfig["sumneko_lua"].setup({
-            capabilities = capabilities,
             on_attach = on_attach,
             settings = {
                 Lua = {
@@ -57,7 +48,6 @@ require("mason-lspconfig").setup_handlers({
 
     ["bashls"] = function()
         lspconfig["bashls"].setup({
-            capabilities = capabilities,
             on_attach = on_attach,
             bash = {
                 filetypes = { "sh" },

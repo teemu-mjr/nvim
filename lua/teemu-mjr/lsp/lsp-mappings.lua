@@ -1,6 +1,5 @@
-local Remap = require("teemu-mjr.remap")
-
-local nnoremap = Remap.nnoremap
+local nnoremap = require("teemu-mjr.remap").nnoremap
+local vnoremap = require("teemu-mjr.remap").vnoremap
 
 local M = {}
 

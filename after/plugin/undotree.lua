@@ -1,7 +1,3 @@
-local nnoremap = require("teemu-mjr.remap").nnoremap
-
-nnoremap("<leader>u", ":UndotreeToggle<CR>")
-
 vim.g.undotree_WindowLayout = 4
 
 vim.cmd([[

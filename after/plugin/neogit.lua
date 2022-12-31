@@ -1,7 +1,3 @@
-local nnoremap = require("teemu-mjr.remap").nnoremap
-
-nnoremap("<leader>gG", ":Neogit<CR>")
-
 require("neogit").setup({
 	disable_signs = false,
 	disable_hint = false,

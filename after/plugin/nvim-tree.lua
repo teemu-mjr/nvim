@@ -1,20 +1,12 @@
-local Remap = require("teemu-mjr.remap")
-local nnoremap = Remap.nnoremap
-
-nnoremap("<leader>e", ":NvimTreeToggle<cr>")
-
 require("nvim-tree").setup({
     auto_reload_on_write = true,
-    create_in_closed_folder = false,
     disable_netrw = false,
     hijack_cursor = false,
-    hijack_netrw = true,
-    hijack_unnamed_buffer_when_opening = false,
+    hijack_netrw = false,
+    hijack_unnamed_buffer_when_opening = true,
     ignore_buffer_on_setup = false,
     open_on_setup = false,
     open_on_setup_file = false,
-    open_on_tab = false,
-    ignore_buf_on_tab_change = {},
     sort_by = "name",
     root_dirs = {},
     prefer_startup_root = false,
@@ -33,15 +25,58 @@ require("nvim-tree").setup({
         preserve_window_proportions = false,
         number = true,
         relativenumber = true,
-        signcolumn = "number",
+        signcolumn = "yes",
         mappings = {
-            custom_only = false,
+            custom_only = true,
             list = {
+                { key = { ".", "<2-RightMouse>" }, action = "cd" },
                 { key = "<bs>", action = "dir_up" },
-                { key = ".", action = "cd" },
-                { key = "<C-t>", action = "" },
-                { key = "<C-k>", action = "" },
-                { key = "<C-s>", action = "toggle_file_info" },
+                { key = "\\", action = "run_file_command" },
+                { key = "a", action = "create" },
+                { key = "<C-x>", action = "toggle_file_info" },
+                { key = "<C-s>", action = "split" },
+                { key = "<C-v>", action = "vsplit" },
+
+                { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+                { key = "<C-e>", action = "edit_in_place" },
+                { key = "O", action = "edit_no_picker" },
+                { key = "<", action = "prev_sibling" },
+                { key = ">", action = "next_sibling" },
+                { key = "P", action = "parent_node" },
+                { key = "<Tab>", action = "preview" },
+                { key = "K", action = "first_sibling" },
+                { key = "J", action = "last_sibling" },
+                { key = "C", action = "toggle_git_clean" },
+                { key = "I", action = "toggle_git_ignored" },
+                { key = "H", action = "toggle_dotfiles" },
+                { key = "B", action = "toggle_no_buffer" },
+                { key = "U", action = "toggle_custom" },
+                { key = "R", action = "refresh" },
+                { key = "d", action = "remove" },
+                { key = "D", action = "trash" },
+                { key = "r", action = "rename" },
+                { key = "<C-r>", action = "full_rename" },
+                { key = "e", action = "rename_basename" },
+                { key = "x", action = "cut" },
+                { key = "c", action = "copy" },
+                { key = "p", action = "paste" },
+                { key = "y", action = "copy_name" },
+                { key = "Y", action = "copy_path" },
+                { key = "gy", action = "copy_absolute_path" },
+                { key = "[e", action = "prev_diag_item" },
+                { key = "[c", action = "prev_git_item" },
+                { key = "]e", action = "next_diag_item" },
+                { key = "]c", action = "next_git_item" },
+                { key = "s", action = "system_open" },
+                { key = "f", action = "live_filter" },
+                { key = "F", action = "clear_live_filter" },
+                { key = "q", action = "close" },
+                { key = "W", action = "collapse_all" },
+                { key = "E", action = "expand_all" },
+                { key = "S", action = "search_node" },
+                { key = "g?", action = "toggle_help" },
+                { key = "m", action = "toggle_mark" },
+                { key = "bmv", action = "bulk_move" },
             },
         },
         float = {
@@ -63,7 +98,7 @@ require("nvim-tree").setup({
         highlight_git = true,
         full_name = false,
         highlight_opened_files = "none",
-        root_folder_modifier = ":~",
+        root_folder_label = ":~:s?$?/..?",
         indent_width = 2,
         indent_markers = {
             enable = false,
@@ -121,6 +156,7 @@ require("nvim-tree").setup({
     },
     update_focused_file = {
         enable = false,
+        debounce_delay = 15,
         update_root = false,
         ignore_list = {},
     },
@@ -132,7 +168,12 @@ require("nvim-tree").setup({
     diagnostics = {
         enable = true,
         show_on_dirs = true,
+        show_on_open_dirs = true,
         debounce_delay = 50,
+        severity = {
+            min = vim.diagnostic.severity.HINT,
+            max = vim.diagnostic.severity.ERROR,
+        },
         icons = {
             hint = "",
             -- hint = "",
@@ -144,17 +185,21 @@ require("nvim-tree").setup({
     },
     filters = {
         dotfiles = true,
+        git_clean = false,
+        no_buffer = false,
         custom = {},
         exclude = {},
     },
     filesystem_watchers = {
         enable = true,
         debounce_delay = 50,
+        ignore_dirs = {},
     },
     git = {
         enable = true,
         ignore = true,
         show_on_dirs = true,
+        show_on_open_dirs = true,
         timeout = 400,
     },
     actions = {
@@ -173,7 +218,7 @@ require("nvim-tree").setup({
                 col = 1,
                 row = 1,
                 relative = "cursor",
-                border = "shadow",
+                border = "none",
                 style = "minimal",
             },
         },
@@ -182,6 +227,7 @@ require("nvim-tree").setup({
             resize_window = true,
             window_picker = {
                 enable = true,
+                picker = "default",
                 chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 exclude = {
                     filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
@@ -190,7 +236,7 @@ require("nvim-tree").setup({
             },
         },
         remove_file = {
-            close_window = true,
+            close_window = false,
         },
     },
     trash = {
@@ -200,6 +246,16 @@ require("nvim-tree").setup({
     live_filter = {
         prefix = "[FILTER]: ",
         always_show_folders = true,
+    },
+    tab = {
+        sync = {
+            open = false,
+            close = false,
+            ignore = {},
+        },
+    },
+    notify = {
+        threshold = vim.log.levels.INFO,
     },
     log = {
         enable = false,
