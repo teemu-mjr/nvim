@@ -17,7 +17,14 @@ require("telescope").setup({
                 ["<c-h>"] = "select_horizontal",
             },
         },
+        file_ignore_patterns = {
+            ".git/",
+        },
     },
-    pickers = {},
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
+    },
     extensions = {},
 })
