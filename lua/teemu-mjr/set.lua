@@ -30,26 +30,12 @@ vim.g.nowritebackup = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
-vim.g.netrw_banner = 1
+vim.g.netrw_banner = 0
 vim.g.netrw_hide = 1
 vim.cmd([[
 let g:netrw_list_hide = netrw_gitignore#Hide()
 ]])
-vim.g.netrw_list_hide = vim.g.netrw_list_hide .. ",\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
-
--- quit if last buffer is a nofile buffer
-vim.cmd([[
-au BufEnter * call MyLastWindow()
-function! MyLastWindow()
-  " if the window is quickfix go on
-  if &buftype=="nofile"
-    " if this window is last on screen quit without warning
-    if winbufnr(2) == -1
-      quit!
-    endif
-  endif
-endfunction
-]])
+-- vim.g.netrw_list_hide = vim.g.netrw_list_hide .. ",\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
 
 -- higlight on yank
 vim.cmd([[
