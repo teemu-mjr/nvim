@@ -56,8 +56,8 @@ require("neogit").setup({
 	mappings = {
 		-- modify status buffer mappings
 		status = {
-			["<enter>"] = "",
-			["o"] = "GoToFile",
+			["<c-o>"] = "GoToFile",
+			["o"] = "Toggle",
 		},
 	},
 })
