@@ -53,6 +53,7 @@ return require("packer").startup(function()
     use("windwp/nvim-ts-autotag")
 
     use("nvim-lualine/lualine.nvim")
+    use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
     use("numToStr/Comment.nvim")
