@@ -9,8 +9,14 @@ local xnoremap = Remap.xnoremap
 -- local inoremap = Remap.inoremap
 
 -- normal --
--- toggle file explorer
-nnoremap("<leader>e", ":Rex<cr>", { silent = true })
+local function toggleNetrw()
+    local ok, _ = pcall(vim.api.nvim_command, "Rexplore")
+    if not ok then
+        vim.api.nvim_command("Explore")
+    end
+end
+
+nnoremap("<leader>e", toggleNetrw, { silent = true })
 vim.api.nvim_create_autocmd("filetype", {
     pattern = "netrw",
     desc = "Custom netrm keymaps",
