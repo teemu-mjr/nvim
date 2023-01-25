@@ -54,4 +54,18 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
+
+    ["texlab"] = function()
+        lspconfig["texlab"].setup({
+            on_attach = on_attach,
+            settings = {
+                texlab = {
+                    build = {
+                        executable = "pdflatex",
+                        onSave = true,
+                    },
+                },
+            },
+        })
+    end,
 })
