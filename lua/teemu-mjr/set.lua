@@ -30,6 +30,7 @@ vim.g.nowritebackup = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
+vim.g.netrw_use_errorwindow = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_hide = 1
 vim.cmd([[
