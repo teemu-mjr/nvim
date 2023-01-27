@@ -13,6 +13,9 @@ local function toggleNetrw()
     local ok, _ = pcall(vim.api.nvim_command, "Rexplore")
     if not ok then
         vim.api.nvim_command("Explore")
+    elseif string.match(vim.api.nvim_command_output("1mess"), "not a former netrw window") then
+        print("Explore")
+        vim.api.nvim_command("Explore")
     end
 end
 
