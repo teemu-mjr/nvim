@@ -6,13 +6,16 @@ require("mason-lspconfig").setup({
 })
 require("teemu-mjr.lsp.null-ls")
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local on_attach = function(client, bufnr)
     -- hover config
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
     -- signatureHelp config
     vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
     -- general remap
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -28,11 +31,11 @@ end
 -- setup servers automatically
 require("mason-lspconfig").setup_handlers({
     function(server_name)
-        require("lspconfig")[server_name].setup({
+        lspconfig[server_name].setup({
             on_attach = on_attach,
+            capabilities = capabilities,
         })
     end,
-
     ["sumneko_lua"] = function()
         lspconfig["sumneko_lua"].setup({
             on_attach = on_attach,
