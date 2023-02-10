@@ -1,3 +1,4 @@
+local nnoremap = require("teemu-mjr.remap").nnoremap
 local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
 local lspconfig = require("lspconfig")
 require("mason").setup()
@@ -48,7 +49,6 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
-
     ["bashls"] = function()
         lspconfig["bashls"].setup({
             on_attach = on_attach,
@@ -57,15 +57,34 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
-
     ["texlab"] = function()
         lspconfig["texlab"].setup({
-            on_attach = on_attach,
+            on_attach = function()
+                on_attach()
+                nnoremap("<leader>z", ":TexlabForward<cr>")
+            end,
             settings = {
                 texlab = {
                     build = {
                         executable = "pdflatex",
+                        args = {
+                            "-pdf",
+                            "-interaction=nonstopmode",
+                            "-synctex=1",
+                            "-shell-escape",
+                            "%f",
+                        },
                         onSave = true,
+                    },
+                    forwardSearch = {
+                        executable = "zathura",
+                        args = {
+                            "--synctex-editor-command",
+                            [[nvim-texlabconfig -file '%{input}' -line %{line}]],
+                            "--synctex-forward",
+                            "%l:1:%f",
+                            "%p",
+                        },
                     },
                 },
             },
