@@ -44,40 +44,33 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Item }),
-        ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Item }),
-
-        ["<c-j>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
-
-        ["<c-f>"] = cmp.mapping.scroll_docs(-4),
-        ["<c-b>"] = cmp.mapping.scroll_docs(4),
-
-        ["<c-l>"] = cmp.mapping(function(fallback)
+        ["<c-p>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                local entry = cmp.get_selected_entry()
-                if not entry then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
-                elseif cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
-                elseif luasnip.jumpable(1) then
-                    luasnip.jump(1)
-                end
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Item })
+            elseif luasnip.jumpable(1) then
+                luasnip.jump(1)
             else
                 fallback()
             end
-        end, { "i", "s", "c" }),
+        end, { "i" }),
 
-        ["<c-h>"] = cmp.mapping(function(fallback)
-            if luasnip.jumpable(-1) then
+        ["<c-n>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
+            elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { "i" }),
+
+        ["<c-j>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }, { "i" }),
+
+        ["<c-f>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-b>"] = cmp.mapping.scroll_docs(4),
 
         ["<c-Space>"] = cmp.mapping(function()
             if cmp.visible() then
@@ -85,23 +78,7 @@ cmp.setup({
             else
                 cmp.complete()
             end
-        end),
-
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.get_selected_entry() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Item })
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Item })
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
+        end, { "i", "c" }),
     },
 })
 
