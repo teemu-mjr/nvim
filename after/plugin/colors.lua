@@ -1,7 +1,6 @@
 require("onedark").setup({
     style = "warm", -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
     ending_tildes = true,
-
     code_style = {
         comments = "italic",
         keywords = "none",
