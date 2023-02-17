@@ -1,34 +1,25 @@
-local Remap = require("teemu-mjr.remap")
--- normal
-local nnoremap = Remap.nnoremap
--- visual
-local vnoremap = Remap.vnoremap
--- visual block
-local xnoremap = Remap.xnoremap
--- insert
--- local inoremap = Remap.inoremap
+------------
+-- NORMAL --
+------------
 
--- normal --
 local function toggleNetrw()
-    local ok, _ = pcall(vim.api.nvim_command, "Rexplore")
-    if not ok or string.match(vim.api.nvim_command_output("1mess"), "not a former netrw window") then
+    local ok, _ = pcall(vim.cmd.Rexplore)
+    if not ok or string.match(vim.api.nvim_exec("1mess", {}), "not a former netrw window") then
         vim.api.nvim_command("Explore")
         print("Explore")
     end
 end
 
-nnoremap("<leader>e", toggleNetrw, { silent = true })
+vim.keymap.set("n", "<leader>e", toggleNetrw, { silent = true })
 vim.api.nvim_create_autocmd("filetype", {
     pattern = "netrw",
-    desc = "Custom netrm keymaps",
+    desc = "Custom netrw keymaps",
     callback = function()
         vim.keymap.set("n", "o", "<cr>", { remap = true, buffer = true })
     end,
 })
--- toggle neogit
-nnoremap("<leader>gG", ":Neogit<cr>")
 -- toggle undotree
-nnoremap("<leader>u", ":UndotreeToggle<cr>")
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", {})
 -- close buffer
 local function closeBuffer()
     local fileStatus = vim.api.nvim_command_output("file")
@@ -39,64 +30,76 @@ local function closeBuffer()
     end
 end
 
-nnoremap("<leader>c", closeBuffer)
-nnoremap("<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
+vim.keymap.set("n", "<leader>c", closeBuffer, {})
+vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
 -- better window navigation
-nnoremap("<c-h>", "<c-w>h")
-nnoremap("<c-j>", "<c-w>j")
-nnoremap("<c-k>", "<c-w>k")
-nnoremap("<c-l>", "<c-w>l")
+vim.keymap.set("n", "<c-h>", "<c-w>h", {})
+vim.keymap.set("n", "<c-j>", "<c-w>j", {})
+vim.keymap.set("n", "<c-k>", "<c-w>k", {})
+vim.keymap.set("n", "<c-l>", "<c-w>l", {})
 -- resize with arrows
-nnoremap("<c-Up>", ":resize -2<cr>")
-nnoremap("<c-Down>", ":resize +2<cr>")
-nnoremap("<c-Left>", ":vertical resize -2<cr>")
-nnoremap("<c-Right>", ":vertical resize +2<cr>")
+vim.keymap.set("n", "<c-Up>", ":resize -2<cr>", {})
+vim.keymap.set("n", "<c-Down>", ":resize +2<cr>", {})
+vim.keymap.set("n", "<c-Left>", ":vertical resize -2<cr>", {})
+vim.keymap.set("n", "<c-Right>", ":vertical resize +2<cr>", {})
 -- center cursor
-nnoremap("<c-d>", "<c-d>zz")
-nnoremap("<c-u>", "<c-u>zz")
-nnoremap("n", "nzz")
-nnoremap("N", "Nzz")
+vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
+vim.keymap.set("n", "<c-u>", "<c-u>zz", {})
+vim.keymap.set("n", "n", "nzz", {})
+vim.keymap.set("n", "N", "Nzz", {})
 -- copy to clipboard
-nnoremap("<leader>y", '"+y')
+vim.keymap.set("n", "<leader>y", '"+y', {})
 -- paste from clipboard
-nnoremap("<leader>p", '"+p')
+vim.keymap.set("n", "<leader>p", '"+p', {})
 -- paste up from clipboard
-nnoremap("<leader>P", '"+P')
+vim.keymap.set("n", "<leader>P", '"+P', {})
 -- delete without yank
-nnoremap("<leader>d", '"_d')
+vim.keymap.set("n", "<leader>d", '"_d', {})
+-- toggle neogit
+vim.keymap.set("n", "<leader>gG", ":Neogit<cr>", {})
 -- gitsign
 -- move between hunks
-nnoremap("<leader>gj", ":Gitsigns next_hunk<cr>")
-nnoremap("<leader>gk", ":Gitsigns prev_hunk<cr>")
+vim.keymap.set("n", "<leader>gj", ":Gitsigns next_hunk<cr>", {})
+vim.keymap.set("n", "<leader>gk", ":Gitsigns prev_hunk<cr>", {})
 -- blame
-nnoremap("<leader>gb", ":Gitsigns blame_line<cr>")
-nnoremap("<leader>gB", ":Gitsigns toggle_current_line_blame<cr>")
+vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<cr>", {})
+vim.keymap.set("n", "<leader>gB", ":Gitsigns toggle_current_line_blame<cr>", {})
 -- highlight
-nnoremap("<leader>gh", ":Gitsigns toggle_linehl<cr>")
+vim.keymap.set("n", "<leader>gh", ":Gitsigns toggle_linehl<cr>", {})
 -- reset hunk
-nnoremap("<leader>gr", ":Gitsigns reset_hunk<cr>")
-nnoremap("<leader>gR", ":Gitsigns reset_buffer<cr>")
+vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", {})
+vim.keymap.set("n", "<leader>gR", ":Gitsigns reset_buffer<cr>", {})
 -- diff
-nnoremap("<leader>gd", ":Gitsigns diffthis<cr>")
+vim.keymap.set("n", "<leader>gd", ":Gitsigns diffthis<cr>", {})
 
--- visual --
+------------
+-- VISUAL --
+------------
+
 -- stay in indent mode
-vnoremap("<", "<gv")
-vnoremap(">", ">gv")
+vim.keymap.set("v", "<", "<gv", {})
+vim.keymap.set("v", ">", ">gv", {})
 -- copy to clipboard
-vnoremap("<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y', {})
+-- paste from clipboard
+vim.keymap.set("v", "<leader>p", '"+p', {})
 -- delete without yank
-vnoremap("<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d', {})
+-- replace from buffer
+vim.keymap.set("v", "<leader>P", '"_dP', {})
 -- run selection with bash
-vnoremap("<leader>tb", ":w !bash<cr>", { silent = true })
+vim.keymap.set("v", "<leader>tb", ":w !bash<cr>", { silent = true })
 -- find and replace
-vnoremap("<leader>rr", '"hy:%s/<c-r>h//gc<left><left><left>')
+vim.keymap.set("v", "<leader>rr", '"hy:%s/<c-r>h//gc<left><left><left>', {})
 
--- visual block --
+------------------
+-- VISUAL BLOCK --
+------------------
+
 -- paste over without losing current
-xnoremap("<leader>o", '"_dP')
+vim.keymap.set("x", "<leader>o", '"_dP', {})
 -- move text up and down
-xnoremap("J", ":move '>+1<cr>gv=gv")
-xnoremap("K", ":move '<-2<cr>gv=gv")
-xnoremap("<A-j>", ":move '>+1<cr>gv=gv")
-xnoremap("<A-k>", ":move '<-2<cr>gv=gv")
+vim.keymap.set("x", "J", ":move '>+1<cr>gv=gv", {})
+vim.keymap.set("x", "K", ":move '<-2<cr>gv=gv", {})
+vim.keymap.set("x", "<A-j>", ":move '>+1<cr>gv=gv", {})
+vim.keymap.set("x", "<A-k>", ":move '<-2<cr>gv=gv", {})

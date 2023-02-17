@@ -1,4 +1,3 @@
-local nnoremap = require("teemu-mjr.remap").nnoremap
 local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
 local lspconfig = require("lspconfig")
 require("mason").setup()
@@ -61,7 +60,7 @@ require("mason-lspconfig").setup_handlers({
         lspconfig["texlab"].setup({
             on_attach = function()
                 on_attach()
-                nnoremap("<leader>z", ":TexlabForward<cr>")
+                vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
             end,
             settings = {
                 texlab = {
