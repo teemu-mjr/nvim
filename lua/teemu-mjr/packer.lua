@@ -27,39 +27,26 @@ return require("packer").startup(function()
     use("L3MON4D3/LuaSnip")
     use("rafamadriz/friendly-snippets")
 
-    use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
-    use({
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
-        tag = "nightly", -- optional, updated every week. (see issue #1193)
-    })
-    use({
-        "s1n7ax/nvim-window-picker",
-        tag = "v1.*",
-        config = function()
-            require("window-picker").setup()
-        end,
-    })
     use("mbbill/undotree")
     use({
         "TimUntersberger/neogit",
         requires = {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
+            "kyazdani42/nvim-web-devicons"
         },
     })
 
-    use("tpope/vim-surround")
-    use("windwp/nvim-ts-autotag")
-
-    use("nvim-lualine/lualine.nvim")
+    -- git
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
+    -- gol
+    use("tpope/vim-surround")
+    use("windwp/nvim-ts-autotag")
     use("numToStr/Comment.nvim")
 
-    -- Theme
+    -- style
     use("navarasu/onedark.nvim")
+    use("nvim-lualine/lualine.nvim")
 end)

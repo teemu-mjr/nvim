@@ -22,7 +22,6 @@ M.diagnostic = function(opts)
     vim.keymap.set("n", "<leader>rr", ":lua vim.diagnostic.open_float()<cr>", opts)
     vim.keymap.set("n", "<leader>rk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
     vim.keymap.set("n", "<leader>rj", ":lua vim.diagnostic.goto_next()<cr>", opts)
-    vim.keymap.set("n", "<leader>rl", ":lua vim.diagnostic.setloclist()<cr>", opts)
 end
 
 return M

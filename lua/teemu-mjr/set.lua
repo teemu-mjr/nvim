@@ -16,6 +16,7 @@ vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.foldlevelstart = 99
+vim.opt.formatoptions = "tjcrql"
 
 vim.opt.splitright = true
 
@@ -26,8 +27,8 @@ vim.opt.encoding = "utf8"
 vim.opt.hidden = true
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.g.nowritebackup = true
-vim.opt.updatetime = 50
+vim.opt.writebackup = false
+vim.opt.timeoutlen = 1000
 vim.opt.colorcolumn = "80"
 
 vim.g.netrw_use_errorwindow = 0
