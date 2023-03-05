@@ -9,7 +9,7 @@ require("teemu-mjr.lsp.null-ls")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- hover config
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
@@ -26,6 +26,11 @@ local on_attach = function(client, bufnr)
     LspRemap.diagnostic(opts)
 
     require("teemu-mjr.lsp.diagnostics").on_attach()
+end
+
+local function null_attach(client)
+    client.server_capabilities.documentFormattingProvider = false
+    on_attach(client)
 end
 
 -- setup servers automatically
@@ -54,6 +59,12 @@ require("mason-lspconfig").setup_handlers({
             bash = {
                 filetypes = { "sh" },
             },
+        })
+    end,
+    ["tsserver"] = function()
+        lspconfig["tsserver"].setup({
+            on_attach = null_attach,
+            capabilities = capabilities
         })
     end,
     ["texlab"] = function()
