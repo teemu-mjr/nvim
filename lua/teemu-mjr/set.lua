@@ -36,9 +36,19 @@ vim.g.netrw_hide = 1
 vim.cmd([[
 let g:netrw_list_hide = netrw_gitignore#Hide()
 ]])
--- vim.g.netrw_list_hide = vim.g.netrw_list_hide .. ",\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
+vim.g.netrw_localcopydircmd = "cp -r"
 
 -- higlight on yank
-vim.cmd([[
-au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 100 })
-]])
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank({ timeout = 100 })
+    end,
+})
+
+vim.g.taboverride = 0
+function Tabo(num)
+    vim.g.taboverride = num
+    vim.opt.tabstop = vim.g.taboverride
+    vim.opt.softtabstop = vim.g.taboverride
+    vim.opt.shiftwidth = vim.g.taboverride
+end
