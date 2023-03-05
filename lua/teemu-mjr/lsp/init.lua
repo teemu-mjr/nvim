@@ -1,4 +1,5 @@
 local LspRemap = require("teemu-mjr.lsp.lsp-mappings")
+require("neodev").setup()
 local lspconfig = require("lspconfig")
 require("mason").setup()
 require("mason-lspconfig").setup({

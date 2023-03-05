@@ -1,8 +1,11 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
+    use("folke/neodev.nvim")
 
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
     use("nvim-treesitter/nvim-treesitter-context")
+
+    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 
     -- lsp
     use({
@@ -10,9 +13,8 @@ return require("packer").startup(function()
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     })
-    -- null-ls
     use("jose-elias-alvarez/null-ls.nvim")
-    -- autocompletion
+    -- cmp
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
