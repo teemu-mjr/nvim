@@ -101,4 +101,17 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
+    ["intelephense"] = function()
+        lspconfig["intelephense"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                intelephense = {
+                    format = {
+                        braces = "k&r"
+                    }
+                }
+            },
+        })
+    end,
 })
