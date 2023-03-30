@@ -21,7 +21,13 @@ M.diagnostic = function(opts)
     vim.keymap.set("n", "<leader>rE", ":lua vim.diagnostic.enable()<cr>", opts)
     vim.keymap.set("n", "<leader>rr", ":lua vim.diagnostic.open_float()<cr>", opts)
     vim.keymap.set("n", "<leader>rk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
+    vim.keymap.set("n", "<leader>rK",
+        ":lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>",
+        opts)
     vim.keymap.set("n", "<leader>rj", ":lua vim.diagnostic.goto_next()<cr>", opts)
+    vim.keymap.set("n", "<leader>rJ",
+        ":lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>",
+        opts)
 end
 
 return M
