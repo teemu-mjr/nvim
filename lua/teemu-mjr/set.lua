@@ -12,6 +12,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.textwidth = 80
 vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
