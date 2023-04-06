@@ -8,12 +8,13 @@ return require("packer").startup(function()
     use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 
     -- lsp
-    use({
+    use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-    })
-    use("jose-elias-alvarez/null-ls.nvim")
+        "jose-elias-alvarez/null-ls.nvim",
+        run = ":MasonUpdate"
+    }
     -- cmp
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")

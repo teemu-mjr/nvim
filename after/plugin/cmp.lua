@@ -63,7 +63,7 @@ cmp.setup({
         ["<c-j>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        }, { "i" }),
+        }),
 
         ["<c-f>"] = cmp.mapping.scroll_docs( -4),
         ["<c-b>"] = cmp.mapping.scroll_docs(4),
