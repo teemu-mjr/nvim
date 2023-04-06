@@ -17,7 +17,11 @@ vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.foldlevelstart = 99
-vim.opt.formatoptions = "tjcrql"
+vim.api.nvim_create_autocmd("FileType *", {
+    callback = function()
+        vim.opt.formatoptions = "tjcrql"
+    end
+})
 
 vim.opt.splitright = true
 
@@ -31,6 +35,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.timeoutlen = 1000
 vim.opt.colorcolumn = "80"
+vim.opt.syntax = "off"
 
 vim.g.netrw_use_errorwindow = 0
 vim.g.netrw_banner = 0
@@ -39,18 +44,3 @@ vim.cmd([[
 let g:netrw_list_hide = netrw_gitignore#Hide()
 ]])
 vim.g.netrw_localcopydircmd = "cp -r"
-
--- higlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank({ timeout = 100 })
-    end,
-})
-
-vim.g.taboverride = 0
-function Tabo(num)
-    vim.g.taboverride = num
-    vim.opt.tabstop = vim.g.taboverride
-    vim.opt.softtabstop = vim.g.taboverride
-    vim.opt.shiftwidth = vim.g.taboverride
-end
