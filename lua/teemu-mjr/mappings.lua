@@ -103,3 +103,9 @@ vim.keymap.set("x", "J", ":move '>+1<cr>gv=gv", {})
 vim.keymap.set("x", "K", ":move '<-2<cr>gv=gv", {})
 vim.keymap.set("x", "<A-j>", ":move '>+1<cr>gv=gv", {})
 vim.keymap.set("x", "<A-k>", ":move '<-2<cr>gv=gv", {})
+
+------------
+-- INSERT --
+------------
+
+vim.keymap.set("i", "<C-c>", "<esc>", {})
