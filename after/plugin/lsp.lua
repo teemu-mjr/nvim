@@ -5,31 +5,19 @@ require("mason-lspconfig").setup({
     automatic_installation = true
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = true,
-    float = {
-        -- border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-})
+local function on_attach(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+end
 
 require("mason-lspconfig").setup_handlers({
     function(server_name)
         require("lspconfig")[server_name].setup({
-            capabilities = capabilities
+            on_attach = on_attach
         })
     end,
     ["lua_ls"] = function()
         require("lspconfig")["lua_ls"].setup({
+            on_attach = on_attach,
             settings = {
                 Lua = {
                     diagnostics = {
@@ -41,6 +29,7 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["bashls"] = function()
         require("lspconfig")["bashls"].setup({
+            on_attach = on_attach,
             bash = {
                 filetypes = { "sh" },
             },
@@ -48,7 +37,8 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["texlab"] = function()
         require("lspconfig")["texlab"].setup({
-            on_attach = function()
+            on_attach = function(client, bufnr)
+                on_attach(client, bufnr)
                 vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
             end,
             settings = {
@@ -80,6 +70,7 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["intelephense"] = function()
         require("lspconfig")["intelephense"].setup({
+            on_attach = on_attach,
             settings = {
                 intelephense = {
                     format = {
@@ -104,6 +95,20 @@ require("null-ls").setup({
                 "--single-attribute-per-line=true",
             },
         }),
+    },
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        -- border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
     },
 })
 
