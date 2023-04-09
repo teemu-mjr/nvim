@@ -109,34 +109,36 @@ require("null-ls").setup({
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>rD", vim.diagnostic.disable, opts)
-vim.keymap.set("n", "<leader>rE", ":lua vim.diagnostic.enable()<cr>", opts)
-vim.keymap.set("n", "<leader>rr", ":lua vim.diagnostic.open_float()<cr>", opts)
-vim.keymap.set("n", "<leader>rk", ":lua vim.diagnostic.goto_prev()<cr>", opts)
+vim.keymap.set("n", "<leader>rE", vim.diagnostic.enable, opts)
+vim.keymap.set("n", "<leader>rr", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>rk", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<leader>rK",
-    ":lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>",
-    opts)
-vim.keymap.set("n", "<leader>rj", ":lua vim.diagnostic.goto_next()<cr>", opts)
+    function()
+        vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end, opts)
+vim.keymap.set("n", "<leader>rj", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<leader>rJ",
-    ":lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>",
-    opts)
+    function()
+        vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, opts)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
         local bufopts = { noremap = true, silent = true, buffer = ev.buffer }
 
-        vim.keymap.set("n", "gD", ":lua vim.lsp.buf.declaration()<cr>", bufopts)
-        vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<cr>", bufopts)
-        vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<cr>", bufopts)
-        vim.keymap.set("n", "gi", ":lua vim.lsp.buf.implementation()<cr>", bufopts)
-        vim.keymap.set("n", "<c-s>", ":lua vim.lsp.buf.signature_help()<cr>", bufopts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set("n", "<c-s>", vim.lsp.buf.signature_help, bufopts)
 
-        vim.keymap.set("n", "gw", ":lua vim.lsp.buf.document_symbol()<cr>", bufopts)
-        vim.keymap.set("n", "gw", ":lua vim.lsp.buf.workspace_symbol()<cr>", bufopts)
-        vim.keymap.set("n", "gr", ":lua vim.lsp.buf.references()<cr>", bufopts)
-        vim.keymap.set("n", "gt", ":lua vim.lsp.buf.type_definition()<cr>", bufopts)
-        vim.keymap.set("n", "<leader>af", ":lua vim.lsp.buf.code_action()<cr>", bufopts)
-        vim.keymap.set("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>", bufopts)
-        vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.format()<cr>", bufopts)
+        vim.keymap.set("n", "gw", vim.lsp.buf.document_symbol, bufopts)
+        vim.keymap.set("n", "gw", vim.lsp.buf.workspace_symbol, bufopts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set("n", "<leader>af", vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+        vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
     end,
 })
