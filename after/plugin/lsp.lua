@@ -5,6 +5,9 @@ require("mason-lspconfig").setup({
     automatic_installation = true
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local function on_attach(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
 end
@@ -12,11 +15,13 @@ end
 require("mason-lspconfig").setup_handlers({
     function(server_name)
         require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
             on_attach = on_attach
         })
     end,
     ["lua_ls"] = function()
         require("lspconfig")["lua_ls"].setup({
+            capabilities = capabilities,
             on_attach = on_attach,
             settings = {
                 Lua = {
@@ -29,6 +34,7 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["bashls"] = function()
         require("lspconfig")["bashls"].setup({
+            capabilities = capabilities,
             on_attach = on_attach,
             bash = {
                 filetypes = { "sh" },
@@ -37,6 +43,7 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["texlab"] = function()
         require("lspconfig")["texlab"].setup({
+            capabilities = capabilities,
             on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
                 vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
@@ -70,6 +77,7 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["intelephense"] = function()
         require("lspconfig")["intelephense"].setup({
+            capabilities = capabilities,
             on_attach = on_attach,
             settings = {
                 intelephense = {
