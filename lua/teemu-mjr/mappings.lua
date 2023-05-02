@@ -32,11 +32,6 @@ end
 
 vim.keymap.set("n", "<leader>c", closeBuffer, {})
 vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
--- better window navigation
-vim.keymap.set("n", "<c-h>", "<c-w>h", {})
-vim.keymap.set("n", "<c-j>", "<c-w>j", {})
-vim.keymap.set("n", "<c-k>", "<c-w>k", {})
-vim.keymap.set("n", "<c-l>", "<c-w>l", {})
 -- resize with arrows
 vim.keymap.set("n", "<c-Up>", ":resize -2<cr>", {})
 vim.keymap.set("n", "<c-Down>", ":resize +2<cr>", {})
