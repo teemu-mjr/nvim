@@ -57,19 +57,18 @@ vim.keymap.set("n", "<leader>P", '"+P', {})
 vim.keymap.set("n", "<leader>d", '"_d', {})
 -- toggle neogit
 vim.keymap.set("n", "<leader>gG", ":Neogit<cr>", {})
--- gitsign
--- move between hunks
+-- move between git hunks
 vim.keymap.set("n", "<leader>gj", ":Gitsigns next_hunk<cr>", {})
 vim.keymap.set("n", "<leader>gk", ":Gitsigns prev_hunk<cr>", {})
--- blame
+-- git blame
 vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<cr>", {})
-vim.keymap.set("n", "<leader>gB", ":Gitsigns toggle_current_line_blame<cr>", {})
--- highlight
+vim.keymap.set("n", "<leader>gB", ":Git blame<cr>", {})
+-- git highlight
 vim.keymap.set("n", "<leader>gh", ":Gitsigns toggle_linehl<cr>", {})
--- reset hunk
+-- git reset hunk
 vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", {})
 vim.keymap.set("n", "<leader>gR", ":Gitsigns reset_buffer<cr>", {})
--- diff
+-- git diff
 vim.keymap.set("n", "<leader>gd", ":Gitsigns diffthis<cr>", {})
 
 ------------
