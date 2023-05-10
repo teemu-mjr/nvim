@@ -87,7 +87,7 @@ vim.keymap.set("v", "<leader>P", '"_dP', {})
 -- run selection with bash
 vim.keymap.set("v", "<leader>tb", ":w !bash<cr>", { silent = true })
 -- find and replace
-vim.keymap.set("v", "<leader>rr", '"hy:%s/<c-r>h//gc<left><left><left>', {})
+vim.keymap.set("v", "<leader>rn", '"hy:%s/<c-r>h/<c-r>h/gc<left><left><left>', {})
 
 ------------------
 -- VISUAL BLOCK --
