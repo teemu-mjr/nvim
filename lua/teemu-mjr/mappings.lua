@@ -11,6 +11,7 @@ local function toggleNetrw()
 end
 
 vim.keymap.set("n", "<leader>e", toggleNetrw, { silent = true })
+vim.keymap.set("n", "<leader>E", ":Explore<cr>", { silent = true })
 vim.api.nvim_create_autocmd("filetype", {
     pattern = "netrw",
     desc = "Custom netrw keymaps",
