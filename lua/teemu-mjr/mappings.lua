@@ -33,11 +33,6 @@ end
 
 vim.keymap.set("n", "<leader>c", closeBuffer, {})
 vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
--- resize with arrows
-vim.keymap.set("n", "<c-Up>", ":resize -2<cr>", {})
-vim.keymap.set("n", "<c-Down>", ":resize +2<cr>", {})
-vim.keymap.set("n", "<c-Left>", ":vertical resize -2<cr>", {})
-vim.keymap.set("n", "<c-Right>", ":vertical resize +2<cr>", {})
 -- center cursor
 vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
 vim.keymap.set("n", "<c-u>", "<c-u>zz", {})
