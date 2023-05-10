@@ -43,6 +43,8 @@ vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
 vim.keymap.set("n", "<c-u>", "<c-u>zz", {})
 vim.keymap.set("n", "n", "nzz", {})
 vim.keymap.set("n", "N", "Nzz", {})
+vim.keymap.set("n", "*", "*zz", {})
+vim.keymap.set("n", "#", "#zz", {})
 -- copy to clipboard
 vim.keymap.set("n", "<leader>y", '"+y', {})
 -- paste from clipboard
