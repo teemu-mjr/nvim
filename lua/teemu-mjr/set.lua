@@ -19,7 +19,7 @@ vim.opt.relativenumber = true
 vim.opt.foldlevelstart = 99
 vim.api.nvim_create_autocmd("FileType *", {
     callback = function()
-        vim.opt.formatoptions = "tjcrql"
+        vim.opt.formatoptions = "jrql"
     end
 })
 
