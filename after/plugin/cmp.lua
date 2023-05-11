@@ -65,8 +65,8 @@ cmp.setup({
             select = true,
         }),
 
-        ["<c-f>"] = cmp.mapping.scroll_docs( -4),
-        ["<c-b>"] = cmp.mapping.scroll_docs(4),
+        ["<c-y>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-e>"] = cmp.mapping.scroll_docs(4),
 
         ["<c-Space>"] = cmp.mapping(function()
             if cmp.visible() then
