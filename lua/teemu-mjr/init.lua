@@ -8,12 +8,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank({ timeout = 100 })
     end,
 })
-
--- tab width overrideing
-vim.g.taboverride = 0
-function Tabo(num)
-    vim.g.taboverride = num
-    vim.opt.tabstop = vim.g.taboverride
-    vim.opt.softtabstop = vim.g.taboverride
-    vim.opt.shiftwidth = vim.g.taboverride
-end
