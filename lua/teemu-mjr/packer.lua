@@ -42,6 +42,9 @@ return require("packer").startup(function()
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
+    -- ai
+    use("github/copilot.vim")
+
     -- gol
     use("tpope/vim-surround")
     use("windwp/nvim-ts-autotag")
