@@ -33,10 +33,10 @@ cmp.setup({
             vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
             vim_item.kind = string.sub(vim_item.kind, 1, 3)
             vim_item.menu = ({
-                    luasnip = "[LUA]",
-                    nvim_lsp = "[LSP]",
-                    buffer = "[BUF]",
-                })[entry.source.name]
+                luasnip = "[LUA]",
+                nvim_lsp = "[LSP]",
+                buffer = "[BUF]",
+            })[entry.source.name]
             return vim_item
         end,
     },
@@ -44,8 +44,8 @@ cmp.setup({
         ["<c-p>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-            elseif luasnip.jumpable( -1) then
-                luasnip.jump( -1)
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
             end
         end, { "i", "s" }),
 
@@ -61,6 +61,25 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
+
+        ["<c-k>"] = cmp.mapping(function()
+            if not cmp.visible() then
+                return
+            end
+
+            for key, value in pairs(cmp.get_entries()) do
+                if value:get_kind() == 15 then
+                    for _ = 1, key do
+                        cmp.select_next_item()
+                    end
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true,
+                    })
+                    return
+                end
+            end
+        end, { "i" }),
 
         ["<c-y>"] = cmp.mapping.scroll_docs(-4),
         ["<c-e>"] = cmp.mapping.scroll_docs(4),
