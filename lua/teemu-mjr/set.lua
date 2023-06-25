@@ -45,3 +45,5 @@ vim.cmd([[
 let g:netrw_list_hide = netrw_gitignore#Hide()
 ]])
 vim.g.netrw_localcopydircmd = "cp -r"
+
+vim.g.omni_sql_no_default_maps = 1
