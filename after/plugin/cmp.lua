@@ -2,6 +2,9 @@ require("luasnip.loaders.from_vscode").lazy_load()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+vim.opt.pumwidth = 40
+vim.opt.pumheight = 10
+
 cmp.setup({
     snippet = {
         expand = function(args)
