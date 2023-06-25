@@ -38,6 +38,9 @@ return require("packer").startup(function()
         },
     })
 
+    -- java
+    use("mfussenegger/nvim-jdtls")
+
     -- git
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
