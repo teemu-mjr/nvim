@@ -31,6 +31,11 @@ local function closeBuffer()
     end
 end
 
+-- unmaximize
+vim.keymap.set("n", "<c-w>o", ":mksession! ~/session.vim<cr>:wincmd o<cr>", { silent = true })
+vim.keymap.set("n", "<c-w>u", ":source ~/session.vim<cr>", { silent = true })
+
+-- close buffer
 vim.keymap.set("n", "<leader>c", closeBuffer, {})
 vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
 -- center cursor
