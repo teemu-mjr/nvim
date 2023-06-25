@@ -35,6 +35,8 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.timeoutlen = 1000
 vim.opt.colorcolumn = "80"
+vim.opt.list = true
+vim.opt.listchars = "tab:| ,trail:·,extends:❯,precedes:❮"
 
 vim.g.netrw_use_errorwindow = 0
 vim.g.netrw_banner = 0
