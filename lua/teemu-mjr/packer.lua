@@ -29,19 +29,19 @@ return require("packer").startup(function()
     use("rafamadriz/friendly-snippets")
 
     use("mbbill/undotree")
+
+    -- java
+    use("mfussenegger/nvim-jdtls")
+
+    -- git
     use({
-        "TimUntersberger/neogit",
+        "NeoGitOrg/neogit",
         requires = {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
             "kyazdani42/nvim-web-devicons"
         },
     })
-
-    -- java
-    use("mfussenegger/nvim-jdtls")
-
-    -- git
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
