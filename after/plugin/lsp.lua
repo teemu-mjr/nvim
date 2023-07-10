@@ -12,6 +12,11 @@ local function on_attach(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
 end
 
+local function null_attach(client, bufnr)
+    on_attach(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+end
+
 require("mason-lspconfig").setup_handlers({
     function(server_name)
         require("lspconfig")[server_name].setup({
@@ -30,6 +35,12 @@ require("mason-lspconfig").setup_handlers({
                     }
                 }
             }
+        })
+    end,
+    ["tsserver"] = function()
+        require("lspconfig")["tsserver"].setup({
+            capabilities = capabilities,
+            on_attach = null_attach
         })
     end,
     ["bashls"] = function()
