@@ -28,8 +28,6 @@ return require("packer").startup(function()
     use("L3MON4D3/LuaSnip")
     use("rafamadriz/friendly-snippets")
 
-    use("mbbill/undotree")
-
     -- java
     use("mfussenegger/nvim-jdtls")
 
@@ -45,7 +43,11 @@ return require("packer").startup(function()
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
+    -- dap
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
     -- gol
+    use("mbbill/undotree")
     use("tpope/vim-surround")
     use("windwp/nvim-ts-autotag")
     use("numToStr/Comment.nvim")
