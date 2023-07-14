@@ -100,6 +100,7 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
     ["jdtls"] = function()
+        require("jdtls").setup_dap({ hotcodereplace = "auto" })
     end
 })
 
