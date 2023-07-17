@@ -32,14 +32,6 @@ return require("packer").startup(function()
     use("mfussenegger/nvim-jdtls")
 
     -- git
-    use({
-        "NeoGitOrg/neogit",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-            "kyazdani42/nvim-web-devicons"
-        },
-    })
     use("tpope/vim-fugitive")
     use("lewis6991/gitsigns.nvim")
 
