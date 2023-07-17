@@ -56,8 +56,8 @@ vim.keymap.set("n", "<leader>P", '"+P', {})
 -- delete without yank
 vim.keymap.set("n", "<leader>d", '"_d', {})
 -- move between git hunks
-vim.keymap.set("n", "<leader>gj", ":Gitsigns next_hunk<cr>", {})
-vim.keymap.set("n", "<leader>gk", ":Gitsigns prev_hunk<cr>", {})
+vim.keymap.set("n", "]c", ":Gitsigns next_hunk<cr>", {})
+vim.keymap.set("n", "[c", ":Gitsigns prev_hunk<cr>", {})
 -- git blame
 vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", {})
 -- git highlight
