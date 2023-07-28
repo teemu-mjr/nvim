@@ -1,13 +1,7 @@
 {
-  "InitNoteWithDate": {
-    "prefix": "---",
-    "body": [
-      "---",
-      "tags: $1",
-      "---",
-      "",
-      "# ${CURRENT_DAY_NAME}"
-    ],
-    "description": "Description"
+  "note-tags": {
+    "prefix": "tags",
+    "body": ["---", "tags: $1", "---"],
+    "description": "Add tags"
   }
 }
