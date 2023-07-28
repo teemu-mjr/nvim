@@ -23,8 +23,6 @@ vim.api.nvim_create_autocmd("FileType *", {
     end
 })
 
-vim.opt.splitright = true
-
 vim.opt.winbar = "%#NormalFloat#%< %t %m%=%y"
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 1
