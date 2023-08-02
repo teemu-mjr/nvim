@@ -1,0 +1,7 @@
+{
+  "document-create-element": {
+    "prefix": "dce",
+    "body": ["document.createElement($1)"],
+    "description": "Create new DOM element"
+  }
+}
