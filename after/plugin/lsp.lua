@@ -106,17 +106,7 @@ require("mason-lspconfig").setup_handlers({
 
 require("null-ls").setup({
     sources = {
-        require("null-ls").builtins.formatting.prettier.with({
-            extra_args = {
-                "--config-precedence=prefer-file",
-                "--tab-width=2",
-                "--use-tabs=false",
-                "--no-semi=false",
-                "--single-quote=false",
-                "--jsx-single-quote=false",
-                "--single-attribute-per-line=true",
-            },
-        }),
+        require("null-ls").builtins.formatting.prettierd,
     },
 })
 
