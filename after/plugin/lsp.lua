@@ -110,7 +110,9 @@ require("null-ls").setup({
 })
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = {
+        severity = { min = vim.diagnostic.severity.ERROR }
+    },
     signs = true,
     underline = true,
     update_in_insert = false,
