@@ -1,61 +1,32 @@
 require("neodev").setup()
 
 require("mason").setup()
-require("mason-lspconfig").setup({
-    automatic_installation = true
-})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local function on_attach(client, bufnr)
-    client.server_capabilities.semanticTokensProvider = nil
-end
-
-local function null_attach(client, bufnr)
-    on_attach(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-end
+require("mason-lspconfig").setup()
 
 require("mason-lspconfig").setup_handlers({
     function(server_name)
-        require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach
-        })
+        require("lspconfig")[server_name].setup({})
     end,
     ["lua_ls"] = function()
-        require("lspconfig")["lua_ls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
+        require("lspconfig").lua_ls.setup({
             settings = {
                 Lua = {
                     workspace = { checkThirdParty = false },
-                    diagnostics = { globals = { "vim", "use" } }
+                    diagnostics = { globals = { "vim" } }
                 }
             }
         })
     end,
-    ["tsserver"] = function()
-        require("lspconfig")["tsserver"].setup({
-            capabilities = capabilities,
-            on_attach = null_attach
-        })
-    end,
     ["bashls"] = function()
-        require("lspconfig")["bashls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
+        require("lspconfig").bashls.setup({
             bash = {
                 filetypes = { "sh" },
             },
         })
     end,
     ["texlab"] = function()
-        require("lspconfig")["texlab"].setup({
-            capabilities = capabilities,
+        require("lspconfig").texlab.setup({
             on_attach = function(client, bufnr)
-                on_attach(client, bufnr)
                 vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
             end,
             settings = {
@@ -86,9 +57,7 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
     ["intelephense"] = function()
-        require("lspconfig")["intelephense"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
+        require("lspconfig").intelephense.setup({
             settings = {
                 intelephense = {
                     format = {
@@ -118,7 +87,6 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
     float = {
-        -- border = "rounded",
         source = "always",
         header = "",
         prefix = "",
