@@ -16,11 +16,6 @@ local config = {
         "-data", workspace_folder
     },
     root_dir = root_dir,
-    settings = {
-        java = {
-        }
-    },
-
     init_options = {
         bundles = bundles,
     }

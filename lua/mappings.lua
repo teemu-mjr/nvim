@@ -12,15 +12,7 @@ end
 
 vim.keymap.set("n", "<leader>e", toggleNetrw, { silent = true })
 vim.keymap.set("n", "<leader>E", ":Explore<cr>", { silent = true })
-vim.api.nvim_create_autocmd("filetype", {
-    pattern = "netrw",
-    desc = "Custom netrw keymaps",
-    callback = function()
-        vim.keymap.set("n", "o", "<cr>", { remap = true, buffer = true })
-    end,
-})
--- toggle undotree
-vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", {})
+
 -- close buffer
 local function closeBuffer()
     local fileStatus = vim.api.nvim_command_output("file")
@@ -38,6 +30,7 @@ vim.keymap.set("n", "<c-w>u", ":source ~/session.vim<cr>", { silent = true })
 -- close buffer
 vim.keymap.set("n", "<leader>c", closeBuffer, {})
 vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
+
 -- center cursor
 vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
 vim.keymap.set("n", "<c-u>", "<c-u>zz", {})
@@ -47,6 +40,7 @@ vim.keymap.set("n", "n", "nzz", {})
 vim.keymap.set("n", "N", "Nzz", {})
 vim.keymap.set("n", "*", "*zz", {})
 vim.keymap.set("n", "#", "#zz", {})
+
 -- copy to clipboard
 vim.keymap.set("n", "<leader>y", '"+y', {})
 -- paste from clipboard
@@ -55,16 +49,6 @@ vim.keymap.set("n", "<leader>p", '"+p', {})
 vim.keymap.set("n", "<leader>P", '"+P', {})
 -- delete without yank
 vim.keymap.set("n", "<leader>d", '"_d', {})
--- move between git hunks
-vim.keymap.set("n", "<leader>gj", ":Gitsigns next_hunk<cr>", {})
-vim.keymap.set("n", "<leader>gk", ":Gitsigns prev_hunk<cr>", {})
--- git blame
-vim.keymap.set("n", "<leader>gb", ":Git blame<cr>", {})
--- git highlight
-vim.keymap.set("n", "<leader>gh", ":Gitsigns toggle_linehl<cr>", {})
--- git reset hunk
-vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", {})
-vim.keymap.set("n", "<leader>gR", ":Gitsigns reset_buffer<cr>", {})
 
 ------------
 -- VISUAL --
