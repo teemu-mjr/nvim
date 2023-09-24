@@ -5,6 +5,8 @@ vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
 vim.opt.encoding = "utf8"
 vim.opt.errorbells = false
+vim.opt.foldenable = false
+vim.opt.foldmethod = "indent"
 vim.opt.guicursor = ""
 vim.opt.hidden = true
 vim.opt.laststatus = 3
@@ -32,6 +34,6 @@ vim.opt.tabstop = 4
 -- netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_hide = 1
-vim.g.netrw_list_hide = vim.fn['netrw_gitignore#Hide']()
+vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_use_errorwindow = 0
