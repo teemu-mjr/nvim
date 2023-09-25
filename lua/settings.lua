@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.omni_sql_no_default_maps = 1
+vim.opt.background = "dark"
 vim.opt.backup = false
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
