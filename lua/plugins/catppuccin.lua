@@ -9,7 +9,7 @@ return {
                 dark = "frappe",
             },
             transparent_background = false, -- disables setting the background color.
-            show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+            show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
             term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
             dim_inactive = {
                 enabled = false, -- dims the background color of inactive window
@@ -21,7 +21,7 @@ return {
             no_underline = false, -- Force no underline
             styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
                 comments = { "italic" }, -- Change the style of comments
-                conditionals = { "italic" },
+                conditionals = {},
                 loops = {},
                 functions = {},
                 keywords = {},
@@ -38,11 +38,8 @@ return {
             integrations = {
                 cmp = true,
                 gitsigns = true,
-                nvimtree = false,
                 treesitter = true,
-                notify = false,
-                mini = false,
-                -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+                telescope = true,
             },
         })
     end
