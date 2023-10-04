@@ -72,6 +72,13 @@ return {
             },
         })
 
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+            vim.lsp.handlers.signature_help, {
+                border = "single",
+                focusable = false
+            }
+        )
+
         vim.diagnostic.config({
             virtual_text = {
                 severity = { min = vim.diagnostic.severity.ERROR }
