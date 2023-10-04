@@ -52,25 +52,30 @@ return {
                     vim_item.menu = ({
                         luasnip = "[LUA]",
                         nvim_lsp = "[LSP]",
+                        nvim_lsp_signature_help = "[SIG]",
                         buffer = "[BUF]",
                     })[entry.source.name]
                     return vim_item
                 end,
             },
             mapping = {
-                ["<c-p>"] = cmp.mapping(function()
+                ["<c-p>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
                     elseif luasnip.jumpable(-1) then
                         luasnip.jump(-1)
+                    else
+                        fallback()
                     end
                 end, { "i", "s" }),
 
-                ["<c-n>"] = cmp.mapping(function()
+                ["<c-n>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                     elseif luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
+                    else
+                        fallback()
                     end
                 end, { "i", "s" }),
 
@@ -79,9 +84,9 @@ return {
                     select = true,
                 }),
 
-                ["<c-k>"] = cmp.mapping(function()
+                ["<c-k>"] = cmp.mapping(function(fallback)
                     if not cmp.visible() then
-                        return
+                        fallback()
                     end
 
                     for key, value in pairs(cmp.get_entries()) do
