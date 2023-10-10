@@ -6,6 +6,6 @@ return {
         vim.keymap.set("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", {})
         vim.keymap.set("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", {})
         vim.keymap.set("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", {})
-        vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", {})
+        vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns blame_line<cr>", {})
     end
 }
