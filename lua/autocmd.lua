@@ -1,6 +1,6 @@
-vim.api.nvim_create_autocmd("FileType *", {
+vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        vim.opt.formatoptions = "jrql"
+        vim.opt.formatoptions:remove("o")
     end
 })
 
