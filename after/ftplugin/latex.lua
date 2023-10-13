@@ -1,1 +1,1 @@
-vim.opt_local.formatoptions = "tjcrql"
+vim.opt_local.formatoptions:append("a")
