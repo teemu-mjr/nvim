@@ -9,11 +9,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank({ timeout = 100 })
     end,
 })
-
-vim.api.nvim_create_autocmd("filetype", {
-    pattern = "netrw",
-    desc = "Custom netrw keymaps",
-    callback = function()
-        vim.keymap.set("n", "o", "<cr>", { remap = true, buffer = true })
-    end,
-})
