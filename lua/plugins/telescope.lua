@@ -1,7 +1,10 @@
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
     config = function()
         require("telescope").setup({
             defaults = {
@@ -25,5 +28,7 @@ return {
         vim.keymap.set("n", "<leader>lh", require("telescope.builtin").help_tags, {})
         vim.keymap.set("n", "<leader>lm", require("telescope.builtin").keymaps, {})
         vim.keymap.set("n", "<leader>ld", require("telescope.builtin").diagnostics, {})
+
+        require("telescope").load_extension("fzf")
     end,
 }
