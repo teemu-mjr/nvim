@@ -1,5 +1,3 @@
-vim.opt_local.shiftwidth = 4
-
 local root_markers = { ".git", "mvnw", "gradlew" }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local home = os.getenv('HOME')
