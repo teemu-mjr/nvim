@@ -7,6 +7,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.encoding = "utf8"
 vim.opt.errorbells = false
 vim.opt.foldenable = false
+vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
 vim.opt.guicursor = ""
 vim.opt.hidden = true
