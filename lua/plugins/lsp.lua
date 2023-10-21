@@ -149,7 +149,7 @@ return {
 
                 vim.keymap.set("n", "<leader>af", vim.lsp.buf.code_action, bufopts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-                vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+                vim.keymap.set({ "n", "v" }, "<leader>f", vim.lsp.buf.format, bufopts)
             end,
         })
     end
