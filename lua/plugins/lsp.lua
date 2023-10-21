@@ -28,7 +28,15 @@ return {
             end,
 
             ["jdtls"] = function()
-                require("jdtls").setup_dap({ hotcodereplace = "auto" })
+                vim.api.nvim_create_autocmd("FileType", {
+                    pattern = "java",
+                    callback = function()
+                        require("jdtls").setup_dap()
+                        require("jdtls").start_or_attach({
+                            cmd = { "jdtls" }
+                        })
+                    end
+                })
             end,
 
             ["texlab"] = function()
