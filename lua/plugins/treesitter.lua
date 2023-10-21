@@ -5,6 +5,10 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         "windwp/nvim-ts-autotag",
     },
+    init = function()
+        vim.opt.foldmethod = "expr"
+        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    end,
     config = function()
         require("nvim-treesitter.configs").setup({
             auto_install = true,
@@ -24,8 +28,5 @@ return {
                 disable = {},
             },
         })
-
-        vim.opt.foldmethod = "expr"
-        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    end
+    end,
 }
