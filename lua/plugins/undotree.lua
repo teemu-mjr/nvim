@@ -6,7 +6,7 @@ return {
 
         vim.cmd([[
         if has("persistent_undo")
-            let target_path = expand('~/.undodir')
+            let target_path = expand("~/.undodir")
 
             if !isdirectory(target_path)
                 call mkdir(target_path, "p", 0700)

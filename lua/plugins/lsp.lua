@@ -39,9 +39,24 @@ return {
                 })
             end,
 
+            ["omnisharp"] = function()
+                require("lspconfig").omnisharp.setup({
+                    enable_editorconfig_support = true,
+                    enable_ms_build_load_projects_on_demand = false,
+                    enable_roslyn_analyzers = true,
+                    organize_imports_on_format = false,
+                    enable_import_completion = false,
+                    sdk_include_prereleases = true,
+                    analyze_open_documents_only = false,
+                    handlers = {
+                        ["textDocument/definition"] = require("omnisharp_extended").handler,
+                    },
+                })
+            end,
+
             ["texlab"] = function()
                 require("lspconfig").texlab.setup({
-                    on_attach = function(client, bufnr)
+                    on_attach = function()
                         vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
                     end,
                     settings = {
@@ -92,7 +107,9 @@ return {
                 severity = { min = vim.diagnostic.severity.ERROR }
             },
             signs = true,
-            underline = true,
+            underline = {
+                severity = { min = vim.diagnostic.severity.INFO }
+            },
             update_in_insert = false,
             severity_sort = true,
             float = {
@@ -117,8 +134,8 @@ return {
                 vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
             end, opts)
 
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
                 local bufopts = { noremap = true, silent = true, buffer = ev.buffer }
 
