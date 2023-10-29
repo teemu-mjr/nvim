@@ -5,23 +5,6 @@
 vim.keymap.set("n", "<leader>e", vim.cmd.Rexplore, {})
 vim.keymap.set("n", "<leader>E", vim.cmd.Explore, {})
 
--- close buffer
-local function closeBuffer()
-    local fileStatus = vim.api.nvim_command_output("file")
-    if string.find(fileStatus, "Modified") then
-        print("You have unsaved changes!")
-    else
-        vim.api.nvim_command([[bp|sp|bn|bd]])
-    end
-end
-
--- unmaximize
-vim.keymap.set("n", "<c-w>o", ":mksession! ~/session.vim<cr>:wincmd o<cr>", { silent = true })
-vim.keymap.set("n", "<c-w>u", ":source ~/session.vim<cr>", { silent = true })
-
--- close buffer
-vim.keymap.set("n", "<leader>c", closeBuffer, {})
-vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
 -- qf list
 vim.keymap.set("n", "<c-j>", "<cmd>cnext<cr>zz", {})
 vim.keymap.set("n", "<c-k>", "<cmd>cprev<cr>zz", {})
@@ -76,11 +59,3 @@ vim.keymap.set("x", "<leader>o", '"_dP', {})
 -- move text up and down
 vim.keymap.set("x", "J", ":move '>+1<cr>gv=gv", {})
 vim.keymap.set("x", "K", ":move '<-2<cr>gv=gv", {})
-vim.keymap.set("x", "<A-j>", ":move '>+1<cr>gv=gv", {})
-vim.keymap.set("x", "<A-k>", ":move '<-2<cr>gv=gv", {})
-
-------------
--- INSERT --
-------------
-
-vim.keymap.set("i", "<C-c>", "<esc>", {})
