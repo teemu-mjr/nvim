@@ -2,8 +2,8 @@
 -- NORMAL --
 ------------
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Rexplore, { silent = true })
-vim.keymap.set("n", "<leader>E", vim.cmd.Explore, { silent = true })
+vim.keymap.set("n", "<leader>e", vim.cmd.Rexplore, {})
+vim.keymap.set("n", "<leader>E", vim.cmd.Explore, {})
 
 -- close buffer
 local function closeBuffer()
@@ -22,6 +22,11 @@ vim.keymap.set("n", "<c-w>u", ":source ~/session.vim<cr>", { silent = true })
 -- close buffer
 vim.keymap.set("n", "<leader>c", closeBuffer, {})
 vim.keymap.set("n", "<leader>C", ":bp|sp|bn|bd!<cr>", { silent = true })
+-- qf list
+vim.keymap.set("n", "<c-j>", "<cmd>cnext<cr>zz", {})
+vim.keymap.set("n", "<c-k>", "<cmd>cprev<cr>zz", {})
+vim.keymap.set("n", "<leader>j", "<cmd>lnext<cr>zz", {})
+vim.keymap.set("n", "<leader>k", "<cmd>lprev<cr>zz", {})
 
 -- center cursor
 vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
