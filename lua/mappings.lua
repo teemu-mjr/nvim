@@ -2,16 +2,8 @@
 -- NORMAL --
 ------------
 
-local function toggleNetrw()
-    local ok, _ = pcall(vim.cmd.Rexplore)
-    if not ok or string.match(vim.api.nvim_exec("1mess", {}), "not a former netrw window") then
-        vim.api.nvim_command("Explore")
-        print("Explore")
-    end
-end
-
-vim.keymap.set("n", "<leader>e", toggleNetrw, { silent = true })
-vim.keymap.set("n", "<leader>E", ":Explore<cr>", { silent = true })
+vim.keymap.set("n", "<leader>e", vim.cmd.Rexplore, { silent = true })
+vim.keymap.set("n", "<leader>E", vim.cmd.Explore, { silent = true })
 
 -- close buffer
 local function closeBuffer()
