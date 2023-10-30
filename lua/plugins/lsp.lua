@@ -143,7 +143,7 @@ return {
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
                 vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
+                vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                 vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, bufopts)
 
