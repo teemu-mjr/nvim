@@ -107,9 +107,6 @@ return {
                 severity = { min = vim.diagnostic.severity.ERROR }
             },
             signs = true,
-            underline = {
-                severity = { min = vim.diagnostic.severity.INFO }
-            },
             update_in_insert = false,
             severity_sort = true,
             float = {
