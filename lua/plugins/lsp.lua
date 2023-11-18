@@ -7,17 +7,23 @@ return {
         "folke/neodev.nvim",
     },
     config = function()
+        local capabilities = vim.lsp.protocol.make_client_capabilities();
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+
         require("neodev").setup()
         require("mason").setup()
         require("mason-lspconfig").setup()
 
         require("mason-lspconfig").setup_handlers({
             function(server_name)
-                require("lspconfig")[server_name].setup({})
+                require("lspconfig")[server_name].setup({
+                    capabilities = capabilities
+                })
             end,
 
             ["lua_ls"] = function()
                 require("lspconfig").lua_ls.setup({
+                    capabilities = capabilities,
                     settings = {
                         Lua = {
                             workspace = { checkThirdParty = false },
@@ -33,6 +39,7 @@ return {
                     callback = function()
                         require("jdtls").setup_dap()
                         require("jdtls").start_or_attach({
+                            capabilities = capabilities,
                             cmd = { "jdtls" }
                         })
                     end
@@ -41,6 +48,7 @@ return {
 
             ["omnisharp"] = function()
                 require("lspconfig").omnisharp.setup({
+                    capabilities = capabilities,
                     enable_editorconfig_support = true,
                     enable_ms_build_load_projects_on_demand = false,
                     enable_roslyn_analyzers = true,
@@ -56,6 +64,7 @@ return {
 
             ["texlab"] = function()
                 require("lspconfig").texlab.setup({
+                    capabilities = capabilities,
                     on_attach = function()
                         vim.keymap.set("n", "<leader>z", ":TexlabForward<cr>")
                     end,
