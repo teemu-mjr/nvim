@@ -32,10 +32,3 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
-
--- netrw
-vim.g.netrw_banner = 0
-vim.g.netrw_hide = 1
-vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
-vim.g.netrw_localcopydircmd = "cp -r"
-vim.g.netrw_use_errorwindow = 0
