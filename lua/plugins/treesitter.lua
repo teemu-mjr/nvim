@@ -3,7 +3,6 @@ return {
     build = ":TSUpdate",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-context",
-        "windwp/nvim-ts-autotag",
     },
     init = function()
         vim.opt.foldmethod = "expr"
@@ -13,11 +12,6 @@ return {
         require("nvim-treesitter.configs").setup({
             auto_install = true,
             ignore_install = {},
-            autotag = {
-                enable = true,
-                disable = {},
-                module_path = "nvim-ts-autotag.internal",
-            },
             highlight = {
                 enable = true,
                 disable = {},
@@ -25,7 +19,7 @@ return {
             },
             indent = {
                 enable = true,
-                disable = {},
+                disable = { "html" },
             },
         })
     end,
