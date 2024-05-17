@@ -46,18 +46,12 @@ return {
                 })
             end,
 
-            ["omnisharp"] = function()
-                require("lspconfig").omnisharp.setup({
+            ["csharp_ls"] = function()
+                require("lspconfig").csharp_ls.setup({
                     capabilities = capabilities,
-                    enable_editorconfig_support = true,
-                    enable_ms_build_load_projects_on_demand = false,
-                    enable_roslyn_analyzers = true,
-                    organize_imports_on_format = false,
-                    enable_import_completion = false,
-                    sdk_include_prereleases = true,
-                    analyze_open_documents_only = false,
                     handlers = {
-                        ["textDocument/definition"] = require("omnisharp_extended").handler,
+                        ["textDocument/definition"] = require('csharpls_extended').handler,
+                        ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
                     },
                 })
             end,
