@@ -3,7 +3,6 @@ return {
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-        "jose-elias-alvarez/null-ls.nvim",
         "folke/neodev.nvim",
     },
     config = function()
@@ -111,12 +110,6 @@ return {
 
         })
 
-        require("null-ls").setup({
-            sources = {
-                require("null-ls").builtins.formatting.prettierd,
-            },
-        })
-
         vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
             vim.lsp.handlers.signature_help, {
                 border = "single",
@@ -132,14 +125,14 @@ return {
             update_in_insert = false,
             severity_sort = true,
             float = {
-                source = "always",
+                source = true,
                 header = "",
                 prefix = "",
             },
         })
 
         local opts = { noremap = true, silent = true }
-        vim.keymap.set("n", "<leader>rD", vim.diagnostic.disable, opts)
+        vim.keymap.set("n", "<leader>rD", function() vim.diagnostic.enable(false) end, opts)
         vim.keymap.set("n", "<leader>rE", vim.diagnostic.enable, opts)
         vim.keymap.set("n", "<leader>rr", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "<leader>rk", vim.diagnostic.goto_prev, opts)
@@ -168,7 +161,6 @@ return {
 
                 vim.keymap.set("n", "<leader>af", vim.lsp.buf.code_action, bufopts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-                vim.keymap.set({ "n", "v" }, "<leader>f", vim.lsp.buf.format, bufopts)
             end,
         })
     end
