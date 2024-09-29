@@ -46,6 +46,7 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             formatting = {
+                fields = { "abbr", "kind", "menu" },
                 format = function(entry, vim_item)
                     vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
                     vim_item.kind = string.sub(vim_item.kind, 1, 3)
@@ -57,6 +58,7 @@ return {
                     })[entry.source.name]
                     return vim_item
                 end,
+                expandable_indicator = true,
             },
             mapping = {
                 ["<c-p>"] = cmp.mapping(function(fallback)
