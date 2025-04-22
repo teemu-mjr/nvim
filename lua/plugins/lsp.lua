@@ -110,13 +110,6 @@ return {
 
         })
 
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-                border = "single",
-                focusable = false
-            }
-        )
-
         vim.diagnostic.config({
             virtual_text = {
                 severity = { min = vim.diagnostic.severity.ERROR }
@@ -135,21 +128,27 @@ return {
         vim.keymap.set("n", "<leader>rD", function() vim.diagnostic.enable(false) end, opts)
         vim.keymap.set("n", "<leader>rE", vim.diagnostic.enable, opts)
         vim.keymap.set("n", "<leader>rr", vim.diagnostic.open_float, opts)
-        vim.keymap.set("n", "<leader>rk", vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "<leader>rk",
+            function()
+                vim.diagnostic.jump({ count = -1 })
+            end, opts)
         vim.keymap.set("n", "<leader>rK",
             function()
-                vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+                vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
             end, opts)
-        vim.keymap.set("n", "<leader>rj", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "<leader>rj",
+            function()
+                vim.diagnostic.jump({ count = 1 })
+            end, opts)
         vim.keymap.set("n", "<leader>rJ",
             function()
-                vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+                vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
             end, opts)
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
-                local bufopts = { noremap = true, silent = true, buffer = ev.buffer }
+                local bufopts = { noremap = true, silent = true, buffer = ev.buf }
 
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -157,7 +156,10 @@ return {
                 vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
                 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-                vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, bufopts)
+                vim.keymap.set({ "n", "i" }, "<c-s>",
+                    function()
+                        vim.lsp.buf.signature_help({ border = "single", focusable = true })
+                    end, bufopts)
 
                 vim.keymap.set("n", "<leader>af", vim.lsp.buf.code_action, bufopts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
