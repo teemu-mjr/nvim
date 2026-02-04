@@ -62,6 +62,12 @@ return {
             additionalRules = {
                 enablePickyRules = true,
             },
+            disabledRules = {
+                ["en-US"] = {
+                    "EN_QUOTES",
+                    "UPPERCASE_SENTENCE_START",
+                },
+            },
         },
     },
 }
