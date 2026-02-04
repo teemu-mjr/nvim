@@ -59,6 +59,9 @@ return {
                 "typst",
                 "xhtml",
             },
+            additionalRules = {
+                enablePickyRules = true,
+            },
         },
     },
 }
