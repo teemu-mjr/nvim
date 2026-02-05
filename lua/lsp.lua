@@ -19,8 +19,10 @@ vim.lsp.enable({
     "ltex_plus",
     "lua_ls",
     "openscad_lsp",
+    "prettierd",
     "pylsp",
     "texlab",
+    "ts_ls",
 })
 
 vim.diagnostic.config({
