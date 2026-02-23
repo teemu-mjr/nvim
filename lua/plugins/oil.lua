@@ -19,7 +19,7 @@ return {
                 ["gx"] = "actions.open_external",
                 ["g."] = "actions.toggle_hidden",
                 ["g\\"] = "actions.toggle_trash",
-                ["yp"] = {
+                ["<leader>yp"] = {
                     callback = function ()
                         require("oil.actions").copy_entry_path.callback()
                         vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
