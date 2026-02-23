@@ -24,6 +24,25 @@ return {
                     local mode = vim.fn.getqflist({ winid = 0 }).winid ~= 0 and "a" or "r"
                     require("oil.util").send_to_quickfix({ action = mode })
                 end,
+                ["qf"] = function()
+                    local columns = require("oil.config").columns
+
+                    local idx
+                    for i, v in ipairs(columns) do
+                        if v == "permissions" then
+                            idx = i
+                            break
+                        end
+                    end
+
+                    if idx then
+                        table.remove(columns, idx)
+                    else
+                        table.insert(columns, "permissions")
+                    end
+
+                    require("oil").set_columns(columns)
+                end,
                 ["<leader>yp"] = {
                     callback = function()
                         require("oil.actions").copy_entry_path.callback()
