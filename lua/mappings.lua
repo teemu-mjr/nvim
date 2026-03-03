@@ -2,14 +2,9 @@
 -- NORMAL --
 ------------
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Rexplore, {})
-vim.keymap.set("n", "<leader>E", vim.cmd.Explore, {})
-
 -- qf list
 vim.keymap.set("n", "<c-j>", "<cmd>cnext<cr>zz", {})
 vim.keymap.set("n", "<c-k>", "<cmd>cprev<cr>zz", {})
-vim.keymap.set("n", "<leader>j", "<cmd>lnext<cr>zz", {})
-vim.keymap.set("n", "<leader>k", "<cmd>lprev<cr>zz", {})
 
 -- center cursor
 vim.keymap.set("n", "<c-d>", "<c-d>zz", {})
